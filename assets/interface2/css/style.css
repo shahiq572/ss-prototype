@@ -1,0 +1,273 @@
+
+.body  {
+    background-color: #f5f5f5;
+}
+
+
+nav {
+    background-color: transparent !important;
+    padding: 0px 10px;
+    line-height: 40px !important;
+    margin-top: 30px;
+}
+
+nav .nav-wrapper {
+    padding: 0px 10px;
+}
+
+nav .brand-logo {
+    color: #37474f !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+}
+
+nav ul a {
+    color: #37474f !important;
+    font-size: 14px !important;
+    margin-left: 10px;
+    font-weight: bold !important;
+}
+
+nav ul a:hover {
+    background-color: #e5daf5 !important;
+    border-radius: 20px;
+}
+nav ul a:hover::before {
+    border-radius: 20px;
+}
+nav ul a:hover::after {
+    border-radius: 20px;
+}
+
+nav ul a:focus::after {
+    border-radius: 20px;
+}
+
+nav ul a:focus::before {
+    border-radius: 20px;
+}
+
+.highlight {
+    background-color: #6200ee;
+    border-radius: 20px;
+    color: white !important;
+}
+
+.highlight:hover {
+    background-color: #6200ff !important;
+}
+
+.no-shadows {
+    box-shadow: none !important;
+}
+
+nav .sidenav-trigger i {
+    line-height: 40px !important;
+}
+
+#search_section {
+    margin-top: 0px;
+}
+
+#search_section .valign-wrapper{
+    margin: 0px;
+}
+
+.search_btn {
+    background-color: #6200ee !important;
+}
+
+#search {
+    border-radius: 20px;
+    margin-top: 5px;
+    box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12),0 5px 5px -3px rgba(0,0,0,0.2);
+}
+
+.search_box input {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/* search blinking cursor start */
+/*
+.blinking_cursor {
+	position: relative;
+}
+.blinking_cursor i {
+    position: absolute;
+	width: 2px;
+    height: 40%;
+    margin-top: 9px;
+    margin-left: 25px;
+	background-color: gray;
+	left: 5px;
+	top: 10%;
+	animation-name: blink;
+	animation-duration: 1000ms;
+	animation-iteration-count: infinite;
+	opacity: 1;
+}
+.blinking_cursor input:focus + i {
+	display: none;
+}
+
+@keyframes blink {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}
+*/
+/* search blinking cursor end */
+
+.btn-floating.btn-large {
+    width: 64px !important;
+    height: 64px !important;
+}
+
+.btn-large i {
+    font-size: 2rem !important;
+    line-height: 62px !important;
+}
+
+.search_summary {
+    background-color: #ECEFF1;
+    margin-top: 10px;
+}
+
+.search_summary .container .row {
+    margin: 0px !important;
+}
+
+.search_summary_text {
+    white-space: nowrap; 
+    width: 100%; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.trends {
+    background-color: #ECEFF1;
+    padding: 20px 0 20px 0;
+    margin-top: 10px;
+}
+.trends .container .row {
+    margin: 0px !important;
+}
+
+.explore_btn {
+    margin-top: 8px;
+    border-radius: 30px !important;
+}
+
+.abstract_view {
+    padding: 10px 16px 10px 10px !important;
+}
+
+#search_image {
+    width: 140px;
+    height: 180px;
+}
+
+#title {
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Times New Roman';
+    margin-top: 5px;
+    margin-bottom: 0px;
+    color: #37474f;
+}
+
+#short_desc {
+    margin: 0px;
+}
+
+#short_desc small {
+    padding: 0px;
+}
+
+#summary {
+    padding: 10px 10px 10px 20px !important;
+}
+
+#summary_title {
+    color: #37474f;
+    margin-top: 0px;
+    font-size: 26px;
+    font-family: "Georgia";
+    font-weight: bold
+}
+
+#summary_text {
+    text-align: justify;
+    text-justify: inter-word;
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-y: auto;
+    height: 200px;
+    font-size: 14px;
+}
+
+.border-right {
+    border-right: 5px solid #37474f;
+    
+}
+
+.separator {
+    border: 1px solid #b0b0b0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .abstract_view {
+        text-align: center !important;
+        border-bottom: 5px solid #37474f;
+        
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .abstract_view {
+        text-align: right !important;
+        border-right: 5px solid #37474f;
+        
+    }
+}
+
+
+
+#platform_icon {
+    width: 50px; 
+    height: 50px; 
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+
+  .more_btn i {
+      color: #FFFFFF !important;
+  }
+
+  
+.more_btn a{
+  
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    background: none;
+    box-shadow: none;
+  }
+  .more_btn a:hover {
+  
+    background: none;
+    box-shadow: none;
+  }
+
+  .switch label input[type=checkbox]:checked+.lever {
+    background-color: #81c784  !important;
+}
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #4caf50 !important;
+}

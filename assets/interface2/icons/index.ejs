@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <title>The Materialize Form Example</title>
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+  </script>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" type="text/css" href="/assets/loaders.css">
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+  <!-- <% include partials/nav.ejs %> -->
+
+  <div class="content">
+    
+    <!-- TOP SECTION -->
+    <section id="search" class="section blue darken-2 center">
+      <div class="container">
+        <form class="col s12" method="post" action="/search_result" onsubmit="return validateReq()">
+
+          <!-- TOP BAR -->
+          <div class="row" style="margin-top: 25px;" >
+
+            <!-- SEARCB BOX -->
+            <div class="col s11" id="autocomplete-input" class="z-depth-2">
+              <!-- SEARCH BAR -->
+              <div class="col s11" id="search_box">
+                <input type="text" id="social_search_bar" name="query" class="white grey-text"  placeholder="Iphone, Apple, etc" required autofocus>
+              </div>
+              <!-- SEARCH BUTTON -->
+              <div class="col s1" id="search_icon">
+                <button type="submit" style="background: transparent; border: none; color: #bdbdbd;"><i class="material-icons" style="font-size: 45px; font-weight: bold; padding-top: 5px; text-shadow: 3px 3px #e0e0e0;">search</i></button>
+              </div>
+            </div>
+            
+            <!-- FILTER BUTTON -->
+            <div class="col s1" id="show_platform_button">
+                <a class="btn-floating btn-large waves-effect waves-light light-green z-depth-2" id="platform_wrap_toggle"><i class="material-icons">filter_list</i></a> 
+            </div>
+
+          </div>
+
+          <!-- MODE OPTIONS -->
+          <div class="row" id="platform_wrap" style="display: none;">
+            <div class="col s12">
+
+              <!-- TWITTER MODE -->
+              <div class="col s2 center-align" id="twitter_mode">
+                <div class="social_option_icon">
+                    <label for="twitter_option">
+                      <img class="responsive-img" src="../assets/twitter.png" id="platform_icon" alt="">
+                    </label>
+                </div>
+                <div class = "switch">
+                  <label>
+                    <input id="twitter_option" name="editList" value="twitter" onclick="update_block('twitter', $(this));" type = "checkbox" checked>
+                    <span class = "lever">
+                  </label></span>
+                </div> 
+                <div class="more_btn center" id="twitter_more">
+                    <a class="btn btn-small waves-effect waves-light modal-trigger" href="#twitter_modal"><i class="material-icons">more</i></a>
+                </div>
+              </div>
+
+              <!-- YOUTUBE MODE -->
+              <div class="col s2 center-align" id="youtube_mode">
+                <div class="social_option_icon">
+                  <label for="youtube_option">
+                    <img class="responsive-img" src="../assets/youtube.png" id="platform_icon" alt="">
+                  </label>
+                </div>
+                <div class = "switch"><label><input id="youtube_option" name="editList" value="youtube" onclick="update_block('youtube', $(this));" type = "checkbox">
+                  <span class = "lever"></label></span>
+                </div>
+                <div class="more_btn center"  id="youtube_more" hidden>
+                    <a class="btn btn-small waves-effect waves-light modal-trigger" href="#youtube_modal"><i class="material-icons">more</i></a>
+                </div>
+              </div>
+
+              <!-- FLICKR MODE -->
+              <div class="col s2 center-align" id="flickr_mode">
+                <div class="social_option_icon">
+                  <label for="flickr_option">
+                    <img class="responsive-img" src="../assets/flickr.png" id="platform_icon" alt="">
+                  </label>
+                </div>
+                <div class = "switch"><label><input id="flickr_option" name="editList" value="flickr" onclick="update_block('flickr', $(this));" type = "checkbox">
+                  <span class = "lever"></label></span>
+                </div> 
+                <div class="more_btn center"  id="flickr_more" hidden>
+                    <a class="btn btn-small waves-effect waves-light modal-trigger" href="#flickr_modal"><i class="material-icons">more</i></a>
+                </div>
+              </div>
+
+              <!-- VIMEO MODE -->
+              <div class="col s2 center-align" id="vimeo_mode" disabled="true">
+                <div class="social_option_icon">
+                  <label for="vimeo_option">
+                    <img class="responsive-img" src="../assets/vimeo.png" id="platform_icon" alt="">
+                  </label>
+                </div>
+                <div class = "switch"><label><input  id="vimeo_option" name="editList" value="vimeo" onclick="update_block('vimeo', $(this));" type = "checkbox" disabled>
+                  <span class = "lever"></label></span>
+                </div> 
+                <div class="more_btn center" id="vimeo_more" hidden>
+                    <a class="btn btn-small waves-effect waves-light modal-trigger" href="#vimeo_modal"><i class="material-icons">more</i></a>
+                </div>
+              </div>
+
+              <!-- GOOGLEPLUS MODE -->
+              <div class="col s2 center-align" id="googleplus_mode">
+                <div class="social_option_icon">
+                  <label for="googleplus_option">
+                    <img class="responsive-img" src="../assets/google-plus.png" id="platform_icon" alt="">
+                  </label>
+                </div>
+                <div class = "switch"><label><input id="googleplus_option" name="editList" value="googleplus" onclick="update_block('googleplus', $(this));" type = "checkbox" disabled>
+                  <span class = "lever"></label></span>
+                </div>
+                <div class="more_btn center" id="googleplus_more" hidden>
+                    <a class="btn btn-small waves-effect waves-light modal-trigger" href="#googleplus_modal"><i class="material-icons">more</i></a>
+                </div> 
+              </div>
+
+              <!-- TUMBLR MODE -->
+              <div class="col s2 center-align" id="tumblr_mode">
+                <div class="social_option_icon">
+                  <label for="tumblr_option">
+                    <img class="responsive-img" src="../assets/tumblr.png" id="platform_icon" alt="">
+                  </label>
+                </div>
+                <div class = "switch"><label><input id="tumblr_option" name="editList" value="tumblr" onclick="update_block('tumblr', $(this));" type = "checkbox" disabled>
+                  <span class = "lever"></label></span>
+                </div> 
+                <div class="more_btn center" id="tumblr_more" hidden>
+                    <a class="btn btn-small waves-effect waves-light modal-trigger" href="#tumblr_modal"><i class="material-icons">more</i></a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- MODALS OF MORE OPTIONS -->
+          <div class="row" id="available_blocks">
+            
+            <!-- Twitter Block -->
+            <div class="modal"  id="twitter_modal">
+                <div style="padding: 30px;">
+                  <div class="modal-content black-text" >
+                    <div class="row">
+                      <div class="col s12 center">
+                        <h3 id="block_header">TWITTER</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12 m6 l6">
+                        <input placeholder="37.781157 -122.398720 1mi" name="tw_geocode" id="twb_geocode" type="text" class="active validate" />
+                        <label for="twb_geocode">Geo Location</label>
+                      </div>
+                      <div class="input-field col s12 m6 l6">
+                        <input placeholder="en" name="tw_lang" id="twb_lang" type="text" class="active validate" />
+                        <label for="twb_lang" >Language</label>
+                      </div>
+                      <div class="input-field col s12 m6 l6">
+                        <input placeholder="15" name="tw_count" id="twb_count" type="number" class="active validate" />
+                        <label for="twb_lang" >Count</label>
+                      </div>
+                      <div class="col s12 m6 l6">
+                        <label class="left white-text">Result Type</label>
+                        <select name="tw_result_type">
+                          <option value="" disabled selected>Select Type</option>
+                          <option name="mixed" value="mixed">Mixed</option>
+                          <option name="recent" value="recent">Recent</option>
+                          <option name="popular" value="popular">Popular</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">CLOSE</a>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Youtube Block -->
+            <div class="modal"  id="youtube_modal">
+              <div style="padding: 30px;">
+                <div class="modal-content black-text" >
+                  <div class="row">
+                    <div class="col s12 center">
+                      <h3 id="block_header">YOUTUBE</h3>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12 m6 l6">
+                      <label  class="left">Order By (Optional)</label>
+                      <select name="yt_orderby">
+                        <option value="" disabled selected>Select Type</option>
+                        <option name="relevance" value = "relevance">Relevance</option>
+                        <option name="rating" value = "rating">Rating</option>
+                        <option name="title" value = "title">Title</option>
+                        <option name="videoCount" value = "videoCount">Video Count</option>
+                        <option name="viewCount" value = "viewCount">View Count</option>
+                        <option name="date" value = "date">Date</option>
+                      </select>
+                    </div>
+                    <div class="input-field col s12 m6 l6">
+                      <input placeholder="25" name="yt_max_results" id="yt_max_results" type="number" max="50" min: "1" class="active validate" />
+                      <label for="yt_max_results" >Max Result</label>
+                    </div>
+                    <div class="col s12 m6 l6">
+                      <label  class="left">Safe Search</label>
+                      <select name="yt_safeSearch">
+                        <option value="" disabled selected>Select Type</option>
+                        <option name="moderate" value = "moderate">Moderate</option>
+                        <option name="none" value = "none">None</option>
+                        <option name="strict" value = "strict">Strict</option>
+                      </select>
+                    </div>
+                    <div class=" col s12 m6 l6">
+                      <div class="input-field">
+                        <input placeholder="SA" name="yt_regionCode" id="yt_regionCode" type="text" class="active validate" />
+                        <label for="yt_regionCode">Region Code</label>
+                      </div>
+                      </div>
+                    <div class=" col s12 m6 l6">
+                      <div class="input-field">
+                        <input placeholder="en" name="yt_relevanceLanguage" id="yt_relevanceLanguage" type="text" class="active validate" />
+                        <label for="yt_relevanceLanguage" >Language</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">CLOSE</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Google Plus Block -->
+            <div class="modal"  id="googleplus_modal">
+                <div style="padding: 30px;">
+                  <div class="modal-content black-text" >
+                    <div class="row">
+                      <div class="col s12 center">
+                        <h3 id="block_header">GOOGLE PLUS</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12 m6 l4">
+                          <input placeholder="en" name="gp_lang" id="gp_lang" type="text" class="active validate" />
+                          <label for="gp_lang">Language</label>
+                        </div>
+                        <div class="input-field col s12 m6 l4">
+                          <input placeholder="10" name="gp_maxResults" id="gp_maxResults" type="number" class="active validate" />
+                          <label for="gp_maxResults" min="1" max="20">Count(Max Results)</label>
+                        </div>
+                        <div class="input-field col s12 m6 l4">
+                          <input placeholder="192A456GXY3ATT" name="gp_pageToken" id="gp_pageToken" type="text" class="active validate" />
+                          <label for="gp_pageToken">Page Token</label>
+                        </div>
+        
+                        <div class="col s12 m6 l4">
+                          <label class="left">Order By</label>
+                          <select name="gp_orderBy">
+                            <option value="" disabled selected>Select Type</option>
+                            <option name="best"   value="best">Best</option>
+                            <option name="recent" value="recent">Recent</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">CLOSE</a>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Vimeo Block -->
+            <div class="modal"  id="vimeo_modal">
+                <div style="padding: 30px;">
+                  <div class="modal-content black-text" >
+                    <div class="row">
+                      <div class="col s12 center">
+                        <h3 id="block_header">VIMEO</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s12 m6 l6">
+                          <label class="left ">Order By</label>
+                          <select name="vimeo_orderby">
+                          <option value="" disabled selected>Select Order</option>
+                          <option name="relevant"    value="relevant"   >Relevant</option>
+                          <option name="likes"        value="likes"       >Likes(Rating)</option>
+                          <option name="plays"        value="plays"       >Plays</option>
+                          <option name="duration"     value="duration"    >Duration</option>
+                          <option name="comments"     value="comments"    >Comments</option>
+                          <option name="date"         value="date"        >Date</option>
+                          <option name="alphabetical" value="alphabetical">Title</option>
+                        </select>
+                        </div>
+                        <div class="col s12 m6 l6">
+                          <label class="left ">Sorting direction</label>
+                          <select name="vimeo_direction">
+                            <option value="" disabled selected>Select Direction</option>
+                            <option name="asc"  value="asc"  >Ascending</option>
+                            <option name="desc" value="desc" >Descending</option>
+                          </select>
+                        </div>
+                        <div class="col s12 m6 l6">
+                          <label class="left ">Filter</label>
+                          <select name="vimeo_filter">
+                            <option value="" disabled selected>Select Filter</option>
+                            <option name="CC"            value="CC"            >CC</option>
+                            <option name="CC-BY"         value="CC-BY"         >CC-BY</option>
+                            <option name="CC-BY-NC"      value="CC-BY-NC"      >CC-BY-NC</option>
+                            <option name="CC-BY-NC-ND"   value="CC-BY-NC-ND"   >CC-BY-NC-ND</option>
+                            <option name="CC-BY-NC-SA"   value="CC-BY-NC-SA"   >CC-BY-NC-SA</option>
+                            <option name="CC-BY-ND"      value="CC-BY-ND"      >CC-BY-ND</option>
+                            <option name="CC-BY-SA"      value="CC-BY-SA"      >CC-BY-SA</option>
+                            <option name="CC0"           value="CC0"           >CC0</option>
+                            <option name="categories"    value="categories"    >Categories</option>
+                            <option name="duration"      value="duration"      >Duration</option>
+                            <option name="in-progress"   value="in-progress"   >In Progress</option>
+                            <option name="minimum_likes" value="minimum_likes" >Minimum Likes</option>
+                            <option name="trending"      value="trending"      >Trending</option>
+                            <option name="upload_state"  value="upload_state"  >Upload State</option>
+                          </select>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                          <input placeholder="5" name="vimeo_per_page" id="vimeo_per_page" type="number" class="active validate" min="1" max="100" />
+                          <label for="vimeo_per_page">Result Count</label>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">CLOSE</a>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Flickr Block -->
+            <div class="modal"  id="flickr_modal">
+              <div style="padding: 30px;">
+                <div class="modal-content black-text" >
+                  <div class="row">
+                    <div class="col s12 center">
+                      <h3 id="block_header">FLICKR</h3>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12 m6 l3">
+                        <input name="flickr_tags" id="flickr_tags" type="text" class="active validate" />
+                        <label for="flickr_tags">Tags(comma separated)</label>
+                      </div>
+                      <div class="input-field col s12 m6 l3">
+                        <input name="flickr_license" id="flickr_license" type="text" class="active validate" />
+                        <label for="flickr_license">License</label>
+                      </div>
+                      <div class="input-field col s12 m6 l3">
+                        <input name="flickr_accuracy" id="flickr_accuracy" type="number" class="active validate" min="1" max="16" />
+                        <label for="flickr_accuracy">Accuracy</label>
+                      </div>
+                      <div class="input-field col s12 m6 l3">
+                        <input placeholder="15" name="flickr_per_page" id="flickr_per_page" type="number" class="active validate" min="1" max="500" />
+                        <label for="flickr_per_page">Result Count</label>
+                      </div>
+                      <!-- The date can be in the form of a mysql datetime or unix timestamp. -->
+                      <div class="col s12 m6 l3">
+                        <label class="left">Minimum Upload Date</label>
+                        <input name="flickr_min_up" type="date" class="active validate" />
+                      </div>
+                      <div class="col s12 m6 l3">
+                        <label class="left">Maximum Upload Date</label>
+                        <input name="flickr_max_up" type="date" class="active validate" />
+                      </div>
+                      <div class="col s12 m6 l3">
+                        <label class="left">Minimum Taken Date</label>
+                        <input name="flickr_min_taken" type="date" class="active validate" />
+                      </div>
+                      <div class="col s12 m6 l3">
+                        <label class="left">Maximum Taken Date</label>
+                        <input name="flickr_max_taken" type="date" class="active validate" />
+                      </div>
+                      <div class="col s12 m6 l3">
+                        <label class="left">Tag Mode</label>
+                        <select name="flickr_result_type">
+                          <option name="any" value="any" selected>Any tag</option>
+                          <option name="all" value="all">All tags</option>
+                        </select>
+                      </div>
+                      <div class="col s12 m6 l3">
+                        <label class="left">Sort By</label>
+                        <select name="flickr_sort">
+                          <option value="" disabled selected>Select Type</option>
+                          <option name="f_date-posted-asc"      value="date-posted-asc"     >Date Posted(asc)</option>
+                          <option name="f_date-posted-desc"     value="date-posted-desc"    >Date Posted(desc)</option>
+                          <option name="f_date-taken-asc"       value="date-taken-asc"      >Date Taken(asc)</option>
+                          <option name="f_date-taken-desc"      value="f_date-taken-desc"   >Date Taken(desc)</option>
+                          <option name="f_interestingness-desc" value="interestingness-desc">Interestingness(asc)</option>
+                          <option name="f_interestingness-asc"  value="interestingness-asc" >Interestingness(desc)</option>
+                          <option name="f_relevance"            value="relevance"           >Relevance</option>
+                        </select>
+                      </div>
+                      <div class="col s12 m6 l3">
+                        <label class="left">Privacy Filter</label>
+                        <select name="flickr_privacy_filter">
+                          <option value="" disabled selected>Select Type</option>
+                          <option name="f_public"                 value="1" >Public Photos</option>
+                          <option name="f_private_friends"        value="2" >Private(Shared w/Family)</option>
+                          <option name="f_private_family"         value="3" >Private(Shared w/Friends)</option>
+                          <option name="f_private_family_friends" value="4" >Private(Shared w/Friends+Family)</option>
+                          <option name="f_private"                value="5" >Private</option>
+                        </select>
+                      </div>
+      
+                      <div class="col s12 m6 l3">
+                        <label class="left">Safe Search</label>
+                        <select name="flickr_safe_search">
+                          <option value="" disabled selected>Select Type</option>
+                          <option name="f_safe"       value="1" >Safe</option>
+                          <option name="f_moderate"   value="2" >Moderate(Shared w/Family)</option>
+                          <option name="f_restricted" value="3" >Restricted(Shared w/Friends)</option>
+                        </select>
+                      </div>
+                      <div class="col s12 m6 l3">
+                        <label class="left">Content Type</label>
+                        <select name="flickr_content_type">
+                          <option value="" disabled selected>Select Type</option>
+                          <option name="f7" value="7" >All </option>
+                          <option name="f1" value="1" >Photos only</option>
+                          <option name="f2" value="2" >Screenshots only </option>
+                          <option name="f3" value="3" >Others only </option>
+                          <option name="f4" value="4" >Photos and Screenshots</option>
+                          <option name="f5" value="5" >Screenshots and other </option>
+                          <option name="f6" value="6" >Photos and others</option>
+                        </select>
+                      </div>
+                      <div class="col s12 m6 l3">
+                        <label class="left">Media Type</label>
+                        <select name="flickr_media_type">
+                          <option value="" disabled selected>Select Type</option>
+                          <option name="f_c_all" value="all"    > All         </option>
+                          <option name="f_c_p"   value="photos" > Photos only </option>
+                          <option name="f_c_v"   value="videos" > Videos only </option>
+                        </select>
+                      </div>
+                      <div class="input-field col s12 m6 l3">
+                        <input placeholder="description,date_taken,date_upload,owner_name,tags,views,media"
+                            name="flickr_extras" id="flickr_extras" type="text" class="active validate" />
+                        <label for="flickr_extras">Extras</label>
+                      </div>
+                      <div class="input-field col s12 m6 l3">
+                        <input placeholder="1" name="flickr_page" id="flickr_page" type="number" class="active validate" min="1" />
+                        <label for="flickr_page">Page Number</label>
+                      </div>
+                      <div class="row">
+                        <div class=" input-field col s12 m12 112">
+                          <div class="col s12 m4 13 left">
+                            <input type="checkbox" name="flickr_isCommons" id="flickr_isCommons" />
+                            <label for="flickr_isCommons" class="left" >Is Common </label>
+                          </div>
+                          <div class="col s12 m4 13 left">
+                            <input type="checkbox" name="flickr_inGallery" id="flickr_inGallery" />
+                            <label for="flickr_inGallery" class="left" >In Gallery</label>
+                          </div>
+                          <div class="col s12 m4 13 left">
+                            <input type="checkbox" name="flickr_isGetty" id="flickr_isGetty"   />
+                            <label for="flickr_isGetty" class= "left" >Is Getty  </label>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">CLOSE</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tumblr Block -->
+            <div class="modal"  id="tumblr_modal">
+                <div style="padding: 30px;">
+                  <div class="modal-content black-text" >
+                    <div class="row">
+                      <div class="col s12 center">
+                        <h3 id="block_header">TUMBLR</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12 m6 l6">
+                        <input placeholder="current" name="tumblr_before" id="tumblr_before" type="number" class="active validate" />
+                        <label for="tumblr_before">Before</label>
+                      </div>
+                      <div class="input-field col s12 m6 l6">
+                        <input placeholder="20" name="tumblr_limit" id="tumblr_limit" type="number" class="active validate" />
+                        <label for="tumblr_limit">Limit</label>
+                      </div>
+                      <div class="col s12 m6 l6">
+                        <label class="left">Filter</label>
+                        <select name="tumblr_filter">
+                          <option value="" disabled selected>Select Type</option>
+                          <option name="html" value="html">Html (default)</option>
+                          <option name="text" value="text">Text</option>
+                          <option name="raw" value="raw">Raw</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">CLOSE</a>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Dailymotion Block - NOT DESIGNED-->
+            <div class="col s12 teal lignten-1" id="dailymotion_block" hidden>
+                <div class="row">
+                  <div class="col s12 center">
+                    <h3 style="border-bottom: solid; border-color: #e0e0e0">Dailymotion</h3>
+                  </div>
+                </div>
+
+                <div class="input-field col s12 m6 l3">
+                  <input placeholder="37.781157 -122.398720 1mi" name="dm_geocode" id="dm_geocode" type="text" class="active validate" />
+                  <label for="dm_geocode" class="white-text">Geo Location</label>
+                </div>
+                <div class="input-field col s12 m6 l3">
+                  <input placeholder="en" name="dm_lang" id="dm_lang" type="text" class="active validate" />
+                  <label for="dm_lang" class="white-text">Language</label>
+                </div>
+                <div class="input-field col s12 m6 l3">
+                  <input placeholder="15" name="dm_count" id="dm_count" type="number" class="active validate" />
+                  <label for="dm_lang" class="white-text">Count</label>
+                </div>
+              </div>  
+
+            <!-- Facebook Block - NOT IMPLEMENTED-->
+            <div class=" col s12 teal lignten-1" id="facebook_block" hidden>
+              <div class="row">
+                <div class="col s12 center">
+                  <h3 style="border-bottom: solid; border-color: #e0e0e0">Facebook</h3>
+                </div>
+              </div>
+              <div class="input-field col s12 m6 l3">
+                <input placeholder="37.781157 -122.398720 1mi" name="fb_geocode" id="fb_geocode" type="text" class="active validate" />
+                <label for="fb_geocode" class="white-text">Geo Location</label>
+              </div>
+              <div class="input-field col s12 m6 l3">
+                <input placeholder="en" name="fb_lang" id="fb_lang" type="text" class="active validate" />
+                <label for="fb_lang" class="white-text">Language</label>
+              </div>
+              <div class="input-field col s12 m6 l3">
+                <input placeholder="15" name="fb_count" id="fb_count" type="number" class="active validate" />
+                <label for="fb_lang" class="white-text">Count</label>
+              </div>
+              <div class="col s12 m6 l3">
+                <label class="left white-text">Result Type</label>
+                <select name="fb_result_type">
+                  <option value="" disabled selected>Select Type</option>
+                  <option name="mixed" value="mixed">Mixed</option>
+                  <option name="recent" value="recent">Recent</option>
+                  <option name="popular" value="popular">Popular</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Facebook Block - NOT IMPLEMENTED -->
+            <div class=" col s12 teal lignten-1" id="instagram_block" hidden>
+              <div class="row">
+                <div class="col s12 center">
+                  <h3 style="border-bottom: solid; border-color: #e0e0e0">Instagram</h3>
+                </div>
+              </div>
+              <div class="input-field col s12 m6 l3">
+                <input placeholder="37.781157 -122.398720 1mi" name="instagram_geocode" id="instagram_geocode" type="text" class="active validate" />
+                <label for="instagram_geocode" class="white-text">Geo Location</label>
+              </div>
+              <div class="input-field col s12 m6 l3">
+                <input placeholder="en" name="instagram_lang" id="instagram_lang" type="text" class="active validate" />
+                <label for="instagram_lang" class="white-text">Language</label>
+              </div>
+              <div class="input-field col s12 m6 l3">
+                <input placeholder="15" name="instagram_count" id="instagram_count" type="number" class="active validate" />
+                <label for="instagram_lang" class="white-text">Count</label>
+              </div>
+              <div class="col s12 m6 l3">
+                <label class="left white-text">Result Type</label>
+                <select name="instagram_result_type">
+                  <option value="" disabled selected>Select Type</option>
+                  <option name="mixed" value="mixed">Mixed</option>
+                  <option name="recent" value="recent">Recent</option>
+                  <option name="popular" value="popular">Popular</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+          
+        </form>
+      </div>
+    </section>
+    
+    <section id="result">
+      <section id="twitter_card" class="" style="background: #f6f6f6">
+          <div class="custom_container">
+            <div id="card-format">
+              <% if (typeof twitter_data !== 'undefined' ) {%>
+                <div class="row masonry">
+                  <% for (var i=0; i < twitter_data.length; i++) {%>
+                    <% if (twitter_data[i].tag == 'twitter') { %>
+                        <div class="card item">
+                          <div class="center" id="card_icon">
+                            <img src="../assets/twitter.png" class="center" alt="twitter" >
+                          </div>
+                          <div class="row">
+                            <div class="col s12 m12">
+                              <div class="title">
+                                <div class="col s3 center">
+                                  <img src="<%= twitter_data[i].user.profile_pic %>" alt="" class="circle responsive-img" style="width: 50px; height: 50px;">
+                                </div>
+                                <div class="col s9">
+                                  <h6 class="title" style="margin-bottom: 0px;"><%= twitter_data[i].user.name %></h6>
+                                  <small style=" color: #a7a7a7"><%= twitter_data[i].user.screen_name %></small>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col s12 card-content">
+                              <div style="margin: 5px;">
+                                <% if(typeof twitter_data[i].retweeted_status !== 'undefined') { %>
+                                  <small>RETWEET @<%= twitter_data[i].retweeted_status.user_screen_name %></small>
+                                  <blockquote class="text">
+                                    <%= twitter_data[i].retweeted_status.full_text %>                 
+                                    <div class="card-image">
+                                      <% if(twitter_data[i].retweeted_status.post_image_url) { %>
+                                        <img src="<%= twitter_data[i].retweeted_status.post_image_url %>">
+                                      <% } %>
+                                    </div>
+                                  </blockquote>
+                                <% } else {%>
+                                  <p class="text"> <%= twitter_data[i].post.full_text %></p>
+                                  <div class="card-image">
+                                      <img src="<%= twitter_data[i].post.post_image_url %>">
+                                  </div>
+                                <% } %>
+                              </div>
+                              <% if (twitter_data[i].urls.length !=0) {%>
+                                <div class="col s12 m12">
+                                  <ul>
+                                    <% for (var j=0; j < twitter_data[i].urls.length; j++) {%>
+                                      <li>
+                                        <a href="<%= twitter_data[i].urls[j].url %>" target="blank">
+                                          <%= twitter_data[i].urls[j].url %>
+                                        </a>
+                                      </li>
+                                      <% } %>
+                                  </ul>
+                                </div>
+                              <% } %>
+                            </div>
+                            <% if (twitter_data[i].hashtags) {%>
+                              <div class="rezults-item-tags">
+                                <% for (var j=0; j < twitter_data[i].hashtags.length; j++) {%>
+                                 <a target="_blank" class="rezults-item-tags__tag"><b>#</b><%= twitter_data[i].hashtags[j].text %></a>
+                                <% } %>
+                              </div>
+                            <% } %>
+                            <div class="col s12">
+                              <div class="col s7" style="margin-top: 12px;">
+                                <small style="font-size: 11px;"><b>POSTED AT:</b><br/>
+                                  <%= twitter_data[i].created_at %>
+                                </small>
+                              </div>
+                              <div class="col s5">
+                                  <a target="blank" href='<%= twitter_data[i].original_post_url %>'><i class="material-icons card_options">input</i></a>
+                                  <a  target="blank" href=""><i class="material-icons card_options">share</i></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    <% } else if (twitter_data[i].tag == 'youtube') {%>
+
+                      <div class="card item">
+                        <div class="">
+                          <div class="center" id="card_icon">
+                            <img src="../assets/youtube.png" class="center" alt="twitter" >
+                          </div>
+                          <div class="row">
+                            <div class="col s12 m12">
+                              <div class="title">
+                                <div class="col s3 center">
+                                  <img src="../assets/youtube_profile.png" alt="" class="circle responsive-img" style="width: 50px; height: 50px;">
+                                </div>
+                                <div class="col s9">
+                                  <h6 class="title" style="margin-bottom: 0px;"><%= twitter_data[i].user.name %></h6>
+                                  <small style=" color: #a7a7a7"><%= twitter_data[i].user.screen_name %></small>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col s12 card-content">
+                              <div style="margin: 5px;">
+                                
+                                  <p class="text"> <%= twitter_data[i].description %></p>
+                                  <iframe style="width: 100%" height="349" allowfullscreen="allowfullscreen"
+                                  src=' <%- twitter_data[i].video_url %> '>
+                                </iframe>
+                              </div>
+                              
+                            </div>
+                            <div class="col s12">
+                              <div class="col s8" style="margin-top: 5px;">
+                                <small style="font-size: 11px;"><b>POSTED AT:</b>
+                                  <%= twitter_data[i].created_at %>
+                                </small>
+                              </div>
+                              <div class="col s4 right-align">
+                                  <a target="blank" href='<%= twitter_data[i].video_url %>'><i class="material-icons card_options">input</i></a>
+                                  <a  target="blank" href=""><i class="material-icons card_options">share</i></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% } else if (twitter_data[i].tag =='flickr') {%>
+
+                      <div class="card item">
+                          <div class="">
+                            <div class="center" id="card_icon">
+                              <img src="../assets/flickr.png" class="center" alt="twitter" >
+                            </div>
+                            <div class="row">
+                              <div class="col s12 m12">
+                                <div class="card-content">
+                                  <h5 style="overflow: hidden;">
+                                    <%= twitter_data[i].title %>
+                                  </h5>
+                                  <div class="card-image">
+                                    <img src="<%= twitter_data[i].photo%>" alt="flickr_post_image">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                    <% } %>
+
+
+
+
+
+                    
+
+                  <% } %>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </section>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+    <section id="result">
+      <section id="twitter_card" class="teal lighten-2">
+        <div class="container">
+          <div id="card-format">
+            <% if (typeof twitter_data !== 'undefined' && twitter_data && twitter_data_type == 'twitter') {%>
+              <div class="row">
+                <% if (twitter_data.statuses) { %>
+                  <% for (var i=0; i< twitter_data.statuses.length; i++) { %>
+                    <% if (twitter_data.statuses[i].user) { %>
+                      <div class="col s12 m12 l6">
+                        <div class="card z-depth-3">
+                          <div class="card-content">
+                            <div class="row">
+                              <div class="col s12 m6 profile_details">
+                                <div class="col s4 center-align">
+                                  <img src="<%= twitter_data.statuses[i].user.profile_image_url %>" alt="" class="circle responsive-img">
+                                </div>
+                                <div class="col s8 ">
+                                  <h5 class="title" style="margin-bottom: 0px;"><%= twitter_data.statuses[i].user.name %></h5>
+                                  <small><%= twitter_data.statuses[i].user.screen_name %></small>
+                                </div>
+                              </div>
+                              <div class="col s12 m6 account_details right-align">
+                                <div class="col s4 center-align">
+                                  <span>Tweets</br></span>
+                                  <span style="color: green"><b><%= twitter_data.statuses[i].user.statuses_count %></b></span>
+                                </div>
+                                <div class="col s4 center-align">
+                                  <span>Following</br></span>
+                                  <span style="color: green"><b><%= twitter_data.statuses[i].user.friends_count %></b></span>
+                                </div>
+                                <div class="col s4 center-align">
+                                  <span>Followers</br></span>
+                                  <span style="color: green"><b><%= twitter_data.statuses[i].user.followers_count %></b></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="divider"></div>
+                            <blockquote >
+                              <%= twitter_data.statuses[i].full_text %>
+                            </blockquote>
+                            <div class="row">
+                              <div class="col s12 m12 post_details">
+                                <div class="col m6 s12 center-align teal lighten-1" style="padding: 10px; color: white; border-color: white; border-style: double;">
+                                  <p>Favorites: <b><%= twitter_data.statuses[i].favorite_count %></b></p>
+                                </div>
+                                <div class="col m6 s12 center-align teal lighten-1" style="padding: 10px; color: white; border-color: white; border-style: double;">
+                                  <p>Retweeets: <b><%= twitter_data.statuses[i].retweet_count %></b></p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="extras">
+                              <div class="row">
+                                <% if (twitter_data.statuses[i].entities.hashtags) {%>
+                                  <div class="col s12 m12">
+                                    <div id="tag-items">
+                                      <ul>
+                                        <% for (var j=0; j < twitter_data.statuses[i].entities.hashtags.length; j++) {%>
+                                          <li><b>#</b><i><%= twitter_data.statuses[i].entities.hashtags[j].text %></i></li>
+                                        <% } %>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                <% } %>
+                                <% if (twitter_data.statuses[i].entities.urls) {%>
+                                  <div class="col s12 m12">
+                                    <ul>
+                                      <% for (var j=0; j < twitter_data.statuses[i].entities.urls.length; j++) {%>
+                                        <li>
+                                          <a href="<%= twitter_data.statuses[i].entities.urls[j].expanded_url %>">
+                                            <%= twitter_data.statuses[i].entities.urls[j].display_url %>
+                                          </a>
+                                        </li>
+                                        <% } %>
+                                    </ul>
+                                  </div>
+                                <% } %>
+                                <div class="col s12">
+                                  <p>
+                                    <%= twitter_data.statuses[i].created_at %>
+                                  </p>
+                                </div>
+                                <div class="col s12 teal center" style="padding: 10px;">
+                                  <a class="white-text" style="text-decoration: none" width: "100%;" target="_blank" href="<%= "https://twitter.com/statuses/"+twitter_data.statuses[i].id_str  %>">GO TO TWEET</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% } %>
+                  <% } %>
+                <% } %>
+              </div>
+              <% } else {%>
+                <h1 class="center">Twitter is not selected</h1>
+              <% } %>
+          </div>
+        </div>
+      </section>
+      
+      <section id="youtube_card" class="teal lighten-2">
+        <div class="container">
+          <div id="card-format">
+            <% if (typeof youtube_data !== 'undefined' && youtube_data && youtube_data_type == 'youtube') {%>
+              <div class="row">
+                  <% for (var i=0; i< youtube_data.length; i++) { %>
+                      <div class="col s12 m12 l6">
+                        <div class="card z-depth-3">
+                          <div class="card-content">
+                            <div class="row teal">
+                              <div class="col s12 center white-text">
+                                <h5 class="title"><%=youtube_data[i].snippet.channelTitle%></h5>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col s12">
+                                <iframe style="width: 100%" height="349" allowfullscreen="allowfullscreen"
+                                  src=" <%= 'https://www.youtube.com/embed/'+youtube_data[i].id.videoId  %> ">
+                                </iframe>
+                                <a href="<%= 'https://www.youtube.com/embed/'+youtube_data[i].id.videoId  %>" target="_blank"><p><b>Created At: </b><i><%=youtube_data[i].snippet.publishedAt%></i></p></a>
+                              </div>
+                            </div>
+                            <div class="divider"></div>
+                            <blockquote style="line-height: 1.3em; height: 3em">
+                              <%= youtube_data[i].snippet.description %>
+                            </blockquote>
+                          </div>
+                        </div>
+                      </div>
+                  <% } %>
+              </div>
+            <% } else {%>
+              <h1 class="center">Youtube is not selected</h1>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <section id="vimeo_card" class="teal lighten-2">
+        <div class="container">
+          <div id="card-format">
+            <% if (typeof vimeo_data !== 'undefined' && vimeo_data && vimeo_data_type == 'vimeo') {%>
+              <div class="row">
+                  <% for (var i=0; i< vimeo_data.length; i++) { %>
+                      <div class="col s12 m12 l6">
+                        <div class="card z-depth-3">
+                          <div class="card-content">
+                            <div class="row teal">
+                              <div class="col s12 center white-text">
+                                <h5 class="title"><%=vimeo_data[i].user.name%></h5>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div id="vimeo_video" class="col s12">
+                                <%- vimeo_data[i].embed.html %>
+                                <p><b>Created At: </b><i><%=vimeo_data[i].created_time%></i></p>
+                              </div>
+                            </div>
+                            <div class="divider"></div>
+                            <blockquote>
+                              <%= vimeo_data[i].description %>.
+                            </blockquote>
+                          </div>
+                        </div>
+                      </div>
+                  <% } %>
+              </div>
+            <% } else {%>
+              <h1>Vimeo is not selected</h1>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <section id="googleplus_card" class="teal lighten-2">
+        <div class="container">
+          <div id="card-format">
+            <% if (typeof googleplus_data !== 'undefined' && googleplus_data && googleplus_data_type == 'googleplus') {%>
+              <div class="row">
+                <% for (var i=0; i< googleplus_data.length; i++) { %>
+                    <div class="col s12 m12 l6">
+                      <div class="card z-depth-3">
+                        <div class="card-content">
+                          <div class="row">
+                            <div class="col s12 m6 profile_details">
+                              <div class="col s4 center-align">
+                                <img src="<%= googleplus_data[i].actor.image.url %>" alt="" class="circle responsive-img">
+                              </div>
+                              <div class="col s8 ">
+                                <h5 class="title" style="margin-bottom: 0px;"><a href="<%= googleplus_data[i].actor.url %>" target="_blank"><%= googleplus_data[i].actor.displayName %></a></h5>
+                                <small><%= googleplus_data[i].access.description %></small>
+                              </div>
+                            </div>
+                            <div class="col s12 m6 account_details right-align">
+                              <div class="col s12 right-align">
+                                <span>Published At:</br></span>
+                                <span style="color: green"><a href="<%= googleplus_data[i].url %>" target="_blank"><b><%= googleplus_data[i].published %></b></a></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="divider"></div>
+                          <blockquote id="content">
+                            <%- googleplus_data[i].object.content %>
+                           
+                          </blockquote>
+                          <div class="row">
+                            <div class="col s12 m12 post_details">
+                              <div class="col m4 s12 center-align teal lighten-1" style="padding: 10px; color: white; border-color: white; border-style: double;">
+                                <p>Replies: <b><%= googleplus_data[i].object.replies.totalItems %></b></p>
+                              </div>
+                              <div class="col m4 s12 center-align teal lighten-1" style="padding: 10px; color: white; border-color: white; border-style: double;">
+                                <p>Plusners: <b><%= googleplus_data[i].object.plusoners.totalItems %></b></p>
+                              </div>
+                              <div class="col m4 s12 center-align teal lighten-1" style="padding: 10px; color: white; border-color: white; border-style: double;">
+                                <p>Reshares: <b><%= googleplus_data[i].object.resharers.totalItems %></b></p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="divider"></div>
+                          <% if(googleplus_data[i].object.attachments) { %>
+                          <div class="row">
+                            <a href="<%= googleplus_data[i].object.attachments[0].url %>">
+                              <div class="row">
+                                <div class="col s12" style="margin: 10px; border: solid none solid none;">
+                                  <h5 class="grey-text" style="text-size: 20px;"><%= googleplus_data[i].object.attachments[0].displayName %></h5>
+                                </div>
+                                <div class="col s12">
+                                  <% if( googleplus_data[i].object.attachments[0].objectType == 'album' ) { %>
+                                    <% for( var j=0; j < googleplus_data[i].object.attachments[0].thumbnails.length; j++ ) { %>
+                                      <div class="col s6">
+                                        <img src="<%= googleplus_data[i].object.attachments[0].thumbnails[j].image.url %>" style="width: 100%;  height: 15vw;" alt="Image">
+                                      </div>
+                                    <% } %>
+                                  <% } else {%>
+                                    <% if(googleplus_data[i].object.attachments[0].image) { %>
+                                      <div class="col s12">
+                                        <img src="<%= googleplus_data[i].object.attachments[0].image.url %>" style="width: 100%;  height: 15vw;" alt="Image">
+                                      </div>
+                                    <% } %>
+                                  <% } %>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                          <% } %>
+                        </div>
+                      </div>
+                    </div>
+                <% } %>
+              </div>
+            <% } else {%>
+              <h1 class="center">GooglePlus is not selected</h1>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <section id="flickr_card" class="teal lighten-2">
+        <div class="container">
+          <div id="card-format">
+            <% if (typeof flickr_data !== 'undefined' && flickr_data && flickr_data_type == 'flickr') {%>
+              <div class="row">
+                  <% for (var i=0; i< flickr_data.length; i++) { %>
+                      <div class="col s12 m12 l6">
+                        <div class="card z-depth-3">
+                          <div class="card-content">
+                            <div class="row teal">
+                              <div class="col s12 center white-text">
+                                <h5 class="title"><%=flickr_data[i].title%></h5>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col s12">
+                                <img src=" <%= '//farm'+flickr_data[i].farm+'.staticflickr.com/'+flickr_data[i].server+'/'+flickr_data[i].id+'_'+flickr_data[i].secret+'.jpg' %>  " style="width: 100%;  height: 349;" alt="Image">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  <% } %>
+              </div>
+            <% } else {%>
+              <h1 class="center">Flickr is not selected</h1>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <section id="tumblr_card" class="teal lighten-2">
+        <div class="container">
+          <div id="card-format">
+            <% if (typeof tumblr_data !== 'undefined' && tumblr_data && tumblr_data_type == 'tumblr') {%>
+              <div class="row">
+                  <% for (var i=0; i< tumblr_data.length; i++) { %>
+                      <div class="col s12 m12 l12">
+                        <div class="card z-depth-3">
+                          <div class="card-content">
+                            <div class="row teal">
+                              <div class="col s12 center white-text">
+                                <h5 class="title" style="margin-bottom: 0px;"><a href="<%= tumblr_data[i].short_url %>" style="text-decoration: none; color: white;"><%= tumblr_data[i].blog_name %></a></h5>
+                              </div>
+                              <div class="col s12 center white-text">
+                                <p style="padding: 5px;"><b>Slugen:</b><i> <%= tumblr_data[i].slug %></i></p>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col s12">
+                                <h4 style="padding: 10px;"><%= tumblr_data[i].title %></h4>
+                                <% if(tumblr_data[i].type == 'text') { %>
+                                  <%- tumblr_data[i].body %>
+                                <% } else if(tumblr_data[i].type == 'link') {%>
+                                  <blockquote>
+                                    <%= tumblr_data[i].excerpt %>
+                                  </blockquote>
+                                  <%- tumblr_data[i].description %>
+                                  <p class="grey-text" style="overflow-x: scroll; width: 100%;">Publisher:   <%= tumblr_data[i].publisher %></p>
+                                <% } else if(tumblr_data[i].type == 'photo') { %>
+                                  <p><i><%= tumblr_data[i].photos[0].caption %></i></p>
+
+                                  <img src="<%= tumblr_data[i].photos[0].original_size.url %>" style="width: 100%;  height: 100%;" alt="Image">
+                                  <%= tumblr_data[i].caption %>
+                                <% } %>
+                                <p><b>Created At: </b><i><%= tumblr_data[i].date %></i></p>
+                              </div>
+                            </div>
+                            <div class="divider"></div>
+                            <blockquote>
+                              <div id="tag-items">
+                                <ul>
+                                  <% for (var j=0; j< tumblr_data[i].tags.length; j++) { %>
+                                    <li><b>#</b><i><%= tumblr_data[i].tags[j] %></i></li>
+                                  <% } %>
+                                </ul>
+                              </div>
+                            </blockquote>
+                          </div>
+                        </div>
+                      </div>
+                  <% } %>
+              </div>
+            <% } else {%>
+              <h1 class="center">Tumblr is not selected</h1>
+            <% } %>
+          </div>
+        </div>
+      </section>
+
+    </section> -->
+
+  </div>
+
+
+    <div class="myspinner">
+    <div class="loader">
+      <div class="loader-inner ball-grid-pulse">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+
+
+  <script src="/assets/javascript.js"></script>
+
+
+
+
+
+
+  <script >
+    var str = "{{ googleplus_data[i].object.content }}";
+    console.log(str);
+    $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128053903-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-128053903-1');
+  </script>
+</body>
+
+</html>

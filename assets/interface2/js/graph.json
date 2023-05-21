@@ -1,0 +1,105 @@
+{
+  "nodes": [
+    {
+      "id": 0,
+      "tag": "op",
+      "title": "Super Bowl",
+      "subtitle": "@NFL",
+      "link": "https://en.wikipedia.org/wiki/Super_Bowl",
+      "body": "The Super Bowl is the annual final playoff game of the National Football League to determine the league champion. It has served as the final game of every NFL season since 1966, replacing the NFL Championship Game. Since 2022, the game is played on the second Sunday in February. Wikipedia",
+      "metadata": {
+        "medialink": "https://pbs.twimg.com/profile_images/1619895559334273028/PHKS_mjX_400x400.jpg",
+        "tags": "#SBLVII"
+      },
+      "timestamp": 61903822,
+      "sentColorCode": "#b3b3b3",
+      "source": "0",
+      "target": "1"
+    },
+    {
+      "id": 1,
+      "tag": "twitter",
+      "title": "NFL",
+      "subtitle": "@NFL",
+      "link": "https://twitter.com/NFL/status/1624970509669765124?s=20",
+      "body": "THE @CHIEFS ARE SUPER BOWL CHAMPIONS ONCE AGAIN!",
+      "metadata": {
+        "medialink": "https://pbs.twimg.com/media/Fo0N5DzaYAA_MdV?format=jpg&name=small",
+        "tags": "#SBLVII"
+      },
+      "timestamp": 61903822,
+      "sentColorCode": "#b3b3b3",
+      "source": "1",
+      "target": "0"
+    },
+    {
+      "id": 2,
+      "tag": "twitter",
+      "title": "Super Bowl LVII was history in the making.👏",
+      "subtitle": "@NFL",
+      "link": "https://twitter.com/NFL",
+      "body": "Super Bowl LVII was history in the making.👏",
+      "metadata": {
+        "medialink": "https://pbs.twimg.com/profile_images/1619895559334273028/PHKS_mjX_400x400.jpg",
+        "tags": "#SBLVII"
+      },
+      "sentColorCode": "#b3b3b3",
+      "source": "2",
+      "target": "0"
+    },
+    {
+      "id": 3,
+      "tag": "twitter",
+      "title": "Roc Nation",
+      "subtitle": "@NFL",
+      "link": "https://twitter.com/RocNation/status/1625238964922908672?s=20",
+      "body": "\"Where have you been all my life\"\n@Rihanna",
+      "metadata": {
+        "medialink": "https://twitter.com/i/status/1625226017504899072",
+        "tags": "#SBLVII #Rihanna"
+      },
+      "sentColorCode": "#b3b3b3",
+      "source": "3",
+      "target": "0"
+    },
+    {
+      "id": 4,
+      "tag": "twitter",
+      "title": "Some tweet related to Song #1",
+      "subtitle": "@NFL",
+      "link": "https://twitter.com/RocNation/status/1625238964922908672?s=20",
+      "body": "\"Where have you been all my life\"\n@Rihanna",
+      "metadata": {
+        "medialink": "https://twitter.com/i/status/1625226017504899072",
+        "tags": "#SBLVII #Rihanna"
+      },
+      "sentColorCode": "#b3b3b3",
+      "source": "4",
+      "target": "3"
+    },
+    {
+      "id": 5,
+      "tag": "twitter",
+      "title": "Some tweet related to Song #2",
+      "subtitle": "@NFL",
+      "link": "https://twitter.com/RocNation/status/1625238964922908672?s=20",
+      "body": "\"Where have you been all my life\"\n@Rihanna",
+      "metadata": {
+        "medialink": "https://twitter.com/i/status/1625226017504899072",
+        "tags": "#SBLVII #Rihanna"
+      },
+      "sentColorCode": "#b3b3b3",
+      "source": "5",
+      "target": "3"
+    }
+  ]
+  ,
+  "links": [
+    { "source": 0, "target": 1},
+    { "source": 0, "target": 2},
+    { "source": 0, "target": 3},
+    { "source": 3, "target": 4},
+    { "source": 3, "target": 5},
+    { "source": 3, "target": 0}
+  ]
+}

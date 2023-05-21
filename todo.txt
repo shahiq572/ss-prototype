@@ -1,0 +1,10 @@
+
+List of things to imporove in current prototype for demonstration:
+
+1. make card design in graph view closer to prototype
+
+2. find timeline view code
+
+3. make multiple demons for different tasks
+
+4. collect data
