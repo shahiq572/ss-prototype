@@ -82,6 +82,7 @@ function updateGraphs(nodesArr, linksArr) {
                             if(d.id == 0) { // check if it is the first node
                                 x_val = (cx - cardWidth / 2);
                             } else {
+                                /** @todo randomly displace x vals to get that graphy effect*/
                                 var angle = (2 * Math.PI * (i - 1)) / (nodes.length - 1); // calculate the angle for this node
                                 x_val =  (cx + radius * Math.cos(angle) - cardWidth / 2);
                             }
@@ -90,7 +91,7 @@ function updateGraphs(nodesArr, linksArr) {
                         })
                         .attr("y", function(d, i) {
                             if(d.id == 0) { // check if it is the first node
-                                y_val =  (cy - cardHeight / 2);
+                                y_val =  (cy - cardHeight / 1.5);
                             } else {
                                 var angle = (2 * Math.PI * (i - 1)) / (nodes.length - 1); // calculate the angle for this node
                                 y_val =  (cy + radius * Math.sin(angle) - cardHeight / 2);
