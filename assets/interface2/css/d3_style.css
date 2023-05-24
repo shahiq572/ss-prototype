@@ -26,7 +26,8 @@
     background: red;
     border-radius: 20px !important;
     cursor: all-scroll;
-    
+    /* height: max-content; */
+    width: 90%;
 }
 
 .card_design:hover {
@@ -60,11 +61,16 @@ nav {
 
 }
 
+.desc_div {
+    height: max-content;
+}
+
 .desc_div p{
-    font-size: 12px;
+    font-size: 14px;
     margin: 2px;
     text-align: justify;
     text-justify: inter-word;
+    text-overflow: ellipsis;
 }
 
 .row {
@@ -84,7 +90,7 @@ nav {
 }
 
 .twitter_content{
-    font-size: 12px;
+    font-size: 13px;
     margin: 0px;
     text-align: justify;
     text-justify: inter-word;
