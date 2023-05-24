@@ -1,7 +1,7 @@
 
 var d3Div = document.getElementById("aaa");
 var width = d3Div.offsetWidth;
-var height = d3Div.offsetHeight;
+var height = d3Div.offsetHeight + 100;
 
 var cardWidth = 350;
 var cardHeight = 300;
@@ -42,6 +42,11 @@ function updateGraphs(nodesArr, linksArr) {
 
     console.log("nodes arr: ",nodes);
     
+
+    // Your existing D3.js code for creating links and nodes goes here...
+
+    // ... your link and node selection logic
+
     var svg = d3.select("svg")
                     .attr("width", width)
                     .attr("height", height);
@@ -54,6 +59,17 @@ function updateGraphs(nodesArr, linksArr) {
                         .attr("stroke", "silver")
                         .attr("stroke-width", 2);
     
+    // To fix root node at center
+    nodes[3].fx = width/2 - cardWidth/2;
+    nodes[3].fy = height/2 - cardHeight/2;    
+
+    // Calculate the center of the SVG
+    var cx = width / 2;
+    var cy = height / 2;
+
+    // Calculate the radius for the nodes, it should be less than half of the SVG's width or height
+    var radius = Math.min(width, height) / 2.5;
+
     var nodeSelection = svg
                     .selectAll("foreignObject")
                     .data(nodes)
@@ -61,6 +77,27 @@ function updateGraphs(nodesArr, linksArr) {
                     .append("foreignObject")
                         .attr("width", cardWidth+"px")
                         .attr("height", cardHeight+"px")
+                        .attr("x", function(d, i) {
+                            x_val = 0;
+                            if(d.id == 0) { // check if it is the first node
+                                x_val = (cx - cardWidth / 2);
+                            } else {
+                                var angle = (2 * Math.PI * (i - 1)) / (nodes.length - 1); // calculate the angle for this node
+                                x_val =  (cx + radius * Math.cos(angle) - cardWidth / 2);
+                            }
+                            console.log("val of d: ",d.id,"val of i: "+i,"x val = ", x_val);
+                            return Math.abs(x_val) + "px";
+                        })
+                        .attr("y", function(d, i) {
+                            if(d.id == 0) { // check if it is the first node
+                                y_val =  (cy - cardHeight / 2);
+                            } else {
+                                var angle = (2 * Math.PI * (i - 1)) / (nodes.length - 1); // calculate the angle for this node
+                                y_val =  (cy + radius * Math.sin(angle) - cardHeight / 2);
+                            }
+                            console.log("y val = ", y_val);
+                            return Math.abs(y_val) + "px";
+                        })
                         .on("click", clickNode)
                         // .call(d3.drag()
                         //     .on("drag", drag))
@@ -121,35 +158,59 @@ function updateGraphs(nodesArr, linksArr) {
                                                 <h2> ${d.title} </h2>
                                             </div>
                                             <div class="desc_div">
-                                                <p  class="minimize" textLength="100"> ${d.body} </p>
+                                                <p  class="minimize" text-length="50"> ${d.body} </p>
                                             </div>
                                         </div>
                                 `}
                             });
         
     
+    
+     
+     // Add node positions
+    //  nodeSelection.forEach((node, i) => {
+         
+    //  });
+
+    // nodeSelection.attr('x', d=>d.x).attr('y', d=>d.y)
+    // nodeSelection.attr('style', d => `left:${d.x}px;top:${d.y}px`);
+
+
+   
+
     var simulation = d3.forceSimulation(nodes);
     simulation
         .force('center', d3.forceCenter(width/2-cardWidth, height/2))
         .force("links", d3.forceLink(links)
                                 .id(d => d.id))
         // .force('nodes', d3.forceManyBody().strength(""+cardHeight*-1).distanceMin(cardHeight).distanceMax(cardHeight*2))
-        .force("collide", d3.forceCollide(function(d) {
-            return document.getElementById(d.tag+"_card").clientHeight/1.1
-          }))
+        // .force("collide", d3.forceCollide(function(d) {
+        //     return document.getElementById(d.tag+"_card").clientHeight/1.1
+        //   }))
         .on('tick', (d, i) => {
-            nodeSelection.attr('style', d => `left:${d.x}px;top:${d.y}px`);
+            // nodeSelection.attr('x', d=>d.x).attr('y', d=>d.y)
+    
+                // TO fix root node at center
+            //     nodes[0].fx = width/2 - cardWidth/2;
+            //     nodes[0].fy = height/2 - cardHeight/4;      
+            //     nodes[0].fixed = true;  
+    
+            // linkSelection
+            //     .attr("x1", d => d.source.x + cardWidth/2)
+            //     .attr("y1", d => d.source.y/2 + cardHeight/2)
+            //     .attr("x2", d => d.target.x + cardWidth/2)
+            //     .attr("y2", d => d.target.y + cardHeight/2);
 
-            // To fix root node at center
-            nodes[0].fx = width/2 - cardWidth/2;
-            nodes[0].fy = height/2 - cardHeight/4;
+            // nodeSelection.attr('style', d => `left:${d.x}px;top:${d.y}px`);
 
-            linkSelection
-                .attr("x1", d => d.source.x + cardWidth/2)
-                .attr("y1", d => d.source.y + cardHeight/2)
-                .attr("x2", d => d.target.x + cardWidth/2)
-                .attr("y2", d => d.target.y + cardHeight/2);
+
+            // linkSelection
+            //     .attr("x1", d => d.source.x + cardWidth/2)
+            //     .attr("y1", d => d.source.y + cardHeight/2)
+            //     .attr("x2", d => d.target.x + cardWidth/2)
+            //     .attr("y2", d => d.target.y + cardHeight/2);
         });
+        // .force('collide',d3.forceCollide().radius(60).iterations(2));
     
     // Define the clickNode function
 function clickNode(d) {
