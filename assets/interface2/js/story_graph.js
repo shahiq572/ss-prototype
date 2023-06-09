@@ -23,14 +23,23 @@ function updateGraphs(nodesArr, linksArr) {
         return link.source === 0;
     });
     
-    console.log("links arr: ",links);
-    
+    // # Code kept incase link selection logic needed
     /*for( var i=1; i<nodes.length;i++) {
     //    links.push( { "source": 0, "target": i } )
         if(nodes[i].id) {
             nodes[i].remove();
         }
-    } */
+    }
+
+    // # code for assigning nodes to links without force()
+    // links = links.map(link => {
+    //     return {
+    //         ...link,
+    //         source: nodes.find(node => node.id === link.source),
+    //         target: nodes.find(node => node.id === link.target)
+    //     };
+    // });
+     */
 
     nodes = links.map(function(link) {
         return nodesArr.find(function(node) {
@@ -40,28 +49,22 @@ function updateGraphs(nodesArr, linksArr) {
 
     nodes.push(nodesArr[0])
 
-    console.log("nodes arr: ",nodes);
-    
-
-    // Your existing D3.js code for creating links and nodes goes here...
-
-    // ... your link and node selection logic
 
     var svg = d3.select("svg")
                     .attr("width", width)
                     .attr("height", height);
     
-    var linkSelection = svg
+    /* var linkSelection = svg
                     .selectAll("line")
                     .data(links)
                     .enter()
                     .append("line")
                         .attr("stroke", "silver")
-                        .attr("stroke-width", 2);
+                        .attr("stroke-width", 2); */
     
     // To fix root node at center
-    nodes[3].fx = width/2 - cardWidth/2;
-    nodes[3].fy = height/2 - cardHeight/2;    
+    // nodes[3].fx = width/2 - cardWidth/2;
+    // nodes[3].fy = height/2 - cardHeight/2;    
 
     // Calculate the center of the SVG
     var cx = width / 2;
@@ -70,6 +73,26 @@ function updateGraphs(nodesArr, linksArr) {
     // Calculate the radius for the nodes, it should be less than half of the SVG's width or height
     var radius = Math.min(width, height) / 2.5;
 
+    nodes = nodes.map((d, i) => {
+        var x_val, y_val;
+        /** @todo randomly displace x vals to get that graphy effect*/
+
+        if(d.id == 0) { // check if it is the first node
+            x_val = (cx - cardWidth / 2);
+            y_val =  (cy - cardHeight / 1.5);
+        } else {
+            var angle = (2 * Math.PI * (i - 1)) / (nodes.length - 1); // calculate the angle for this node
+            x_val =  (cx + radius * Math.cos(angle) - cardWidth / 2);
+            y_val =  (cy + radius * Math.sin(angle) - cardHeight / 2);
+        }
+        
+        return {
+            ...d,
+            x: Math.abs(x_val),
+            y: Math.abs(y_val)
+        };
+    });
+
     var nodeSelection = svg
                     .selectAll("foreignObject")
                     .data(nodes)
@@ -77,28 +100,8 @@ function updateGraphs(nodesArr, linksArr) {
                     .append("foreignObject")
                         .attr("width", cardWidth+"px")
                         .attr("height", cardHeight+"px")
-                        .attr("x", function(d, i) {
-                            x_val = 0;
-                            if(d.id == 0) { // check if it is the first node
-                                x_val = (cx - cardWidth / 2);
-                            } else {
-                                /** @todo randomly displace x vals to get that graphy effect*/
-                                var angle = (2 * Math.PI * (i - 1)) / (nodes.length - 1); // calculate the angle for this node
-                                x_val =  (cx + radius * Math.cos(angle) - cardWidth / 2);
-                            }
-                            console.log("val of d: ",d.id,"val of i: "+i,"x val = ", x_val);
-                            return Math.abs(x_val) + "px";
-                        })
-                        .attr("y", function(d, i) {
-                            if(d.id == 0) { // check if it is the first node
-                                y_val =  (cy - cardHeight / 1.5);
-                            } else {
-                                var angle = (2 * Math.PI * (i - 1)) / (nodes.length - 1); // calculate the angle for this node
-                                y_val =  (cy + radius * Math.sin(angle) - cardHeight / 2);
-                            }
-                            console.log("y val = ", y_val);
-                            return Math.abs(y_val) + "px";
-                        })
+                        .attr("x", d => d.x + "px")
+                        .attr("y", d => d.y + "px")
                         .on("click", clickNode)
                         // .call(d3.drag()
                         //     .on("drag", drag))
@@ -165,39 +168,32 @@ function updateGraphs(nodesArr, linksArr) {
                                 `}
                             });
         
-    
-    
-     
-     // Add node positions
-    //  nodeSelection.forEach((node, i) => {
-         
-    //  });
-
-    // nodeSelection.attr('x', d=>d.x).attr('y', d=>d.y)
-    // nodeSelection.attr('style', d => `left:${d.x}px;top:${d.y}px`);
-
 
    
-
+    
     var simulation = d3.forceSimulation(nodes);
     simulation
         .force('center', d3.forceCenter(width/2-cardWidth, height/2))
-        .force("links", d3.forceLink(links)
-                                .id(d => d.id))
+        .force("links", d3.forceLink(links).id(d => d.id))
+                                ;
+        /*
         // .force('nodes', d3.forceManyBody().strength(""+cardHeight*-1).distanceMin(cardHeight).distanceMax(cardHeight*2))
         // .force("collide", d3.forceCollide(function(d) {
         //     return document.getElementById(d.tag+"_card").clientHeight/1.1
         //   }))
         .on('tick', (d, i) => {
             // nodeSelection.attr('x', d=>d.x).attr('y', d=>d.y)
-    
-                // TO fix root node at center
+
+            // TO fix root node at center
             //     nodes[0].fx = width/2 - cardWidth/2;
             //     nodes[0].fy = height/2 - cardHeight/4;      
-            //     nodes[0].fixed = true;  
-    
+            //     nodes[0].fixed = true;
+                
             // linkSelection
-            //     .attr("x1", d => d.source.x + cardWidth/2)
+            //     .attr("x1", function (d) {
+            //             console.log('link for node: '+d.id, d.source.x, d.source.y, d.target.x, d.target.y);
+            //             return d.source.x + cardWidth / 2;
+            //         })
             //     .attr("y1", d => d.source.y/2 + cardHeight/2)
             //     .attr("x2", d => d.target.x + cardWidth/2)
             //     .attr("y2", d => d.target.y + cardHeight/2);
@@ -205,14 +201,31 @@ function updateGraphs(nodesArr, linksArr) {
             // nodeSelection.attr('style', d => `left:${d.x}px;top:${d.y}px`);
 
 
-            // linkSelection
-            //     .attr("x1", d => d.source.x + cardWidth/2)
-            //     .attr("y1", d => d.source.y + cardHeight/2)
-            //     .attr("x2", d => d.target.x + cardWidth/2)
-            //     .attr("y2", d => d.target.y + cardHeight/2);
+            linkSelection
+                .attr("x1", d => d.source.x + cardWidth/2)
+                .attr("y1", d => d.source.y + cardHeight/2)
+                .attr("x2", d => d.target.x + cardWidth/2)
+                .attr("y2", d => d.target.y + cardHeight/2); 
         });
         // .force('collide',d3.forceCollide().radius(60).iterations(2));
-    
+        */
+
+        let linkSelection = svg
+        .selectAll("line")
+        .data(links)
+        .enter()
+        .append("line")
+        .lower()
+            .attr("class","d3-graph-links")
+            .attr("stroke", "silver")
+            .attr("stroke-width", 2)
+            .attr("x1", d => d.source.x + cardWidth / 2.3)
+            .attr("y1", d => d.source.y + cardHeight / 2)
+            .attr("x2", d => d.target.x + cardWidth / 2.5)
+            .attr("y2", d => d.target.y + cardHeight / 4);
+
+    // d3.selectAll(".d3-graph-links").lower();
+
     // Define the clickNode function
 function clickNode(d) {
     console.log("\n CLikced node: "+d.id);
@@ -244,14 +257,14 @@ function clickNode(d) {
       .restart(); // Restart the simulation
   
     // Reposition the nodes and links
-    node
+    nodeSelection
       .transition()
       .duration(500)
       .attr("transform", function (d) {
         return "translate(" + (d.x = d.initX) + "," + (d.y = d.initY) + ")";
       });
   
-    link
+    linkSelection
       .transition()
       .duration(500)
       .attr("x1", function (d) {
