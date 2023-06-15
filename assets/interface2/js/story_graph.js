@@ -22,7 +22,7 @@ var data_json = d3.json("/assets/interface2/js/graph.json", function(error, grap
 
 })
 
-function updateGraphs(nodesArr, linksArr, centerNodeId = 3) {
+function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
     
     console.log("old links: ", links);
     
@@ -104,8 +104,8 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 3) {
                     .append("foreignObject")
                         .attr("width", cardWidth+"px")
                         .attr("height", cardHeight+"px")
-                        .attr("x", d => d.x + "px")
-                        .attr("y", d => d.y + "px")
+                        .attr("x", (cx - cardWidth/2) + "px")
+                        .attr("y", (cy - cardHeight/1.5) + "px")
                         .on("click", clickNode)
                         // .call(d3.drag()
                         //     .on("drag", drag))
@@ -170,7 +170,13 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 3) {
                                             </div>
                                         </div>
                                 `}
-                            });
+                            })
+                    .style("opacity", 0.5)
+                    .transition()
+                    .duration(700)
+                    .style("opacity", 1)
+                    .attr("x", d => d.x + "px")
+                    .attr("y", d => d.y + "px");
         
 
    
@@ -227,10 +233,16 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 3) {
             .attr("stroke-width", 2)
             .attr("x1", d => d.source.x + cardWidth / 2.3)
             .attr("y1", d => d.source.y + cardHeight / 4)
+            .attr("x2", d => d.source.x + cardWidth / 2.3)
+            .attr("y2", d => d.source.y + cardHeight / 4)
+            // .style("opacity", 0) 
+            .transition()
+            .duration(600)
+            // .style("opacity", 1)
             .attr("x2", d => d.target.x + cardWidth / 2.5)
             .attr("y2", d => d.target.y + cardHeight / 4);
-  
-}
+
+        }
 
 
     // Define the clickNode function
