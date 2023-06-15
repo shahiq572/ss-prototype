@@ -8,20 +8,31 @@ var cardHeight = 300;
 
 var currentNode = 0;
 
+var graph_json;
+
+var svg = d3.select("svg")
+        .attr("width", width)
+        .attr("height", height);
+
 var nodes = []
 var data_json = d3.json("/assets/interface2/js/graph.json", function(error, graph) {
     if(error) console.log("ERROR OCCUR: "+JSON.stringify(error, null, 2))
-    updateGraphs(graph.nodes, graph.links)
+    graph_json = graph;
+    updateGraphs(graph.nodes, graph.links);
 
 })
 
-function updateGraphs(nodesArr, linksArr) {
+function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
     // nodes = nodesArr
     // filter out the elements whose source is not 0
 
+    console.log("old links: ", links);
+
     var links = linksArr.filter(function(link) {
-        return link.source === 0;
+        return link.source == centerNodeId;
     });
+
+    console.log("new links: ", links);
     
     // # Code kept incase link selection logic needed
     /*for( var i=1; i<nodes.length;i++) {
@@ -47,12 +58,17 @@ function updateGraphs(nodesArr, linksArr) {
         });
     });
 
-    nodes.push(nodesArr[0])
+    // if (centerNodeId == 0) {
+    //     nodes.push(nodesArr[0])
+    // }
+
+    // The actual center node since we only fecthed thae targets
+    nodes.push(nodesArr.find(e => e.id == centerNodeId))
+
+    console.log(nodes);
 
 
-    var svg = d3.select("svg")
-                    .attr("width", width)
-                    .attr("height", height);
+
     
     /* var linkSelection = svg
                     .selectAll("line")
@@ -77,13 +93,13 @@ function updateGraphs(nodesArr, linksArr) {
         var x_val, y_val;
         /** @todo randomly displace x vals to get that graphy effect*/
 
-        if(d.id == 0) { // check if it is the first node
+        if(d.id == centerNodeId) { // check if it is the first node
             x_val = (cx - cardWidth / 2);
             y_val =  (cy - cardHeight / 1.5);
         } else {
             var angle = (2 * Math.PI * (i - 1)) / (nodes.length - 1); // calculate the angle for this node
             x_val =  (cx + radius * Math.cos(angle) - cardWidth / 2);
-            y_val =  (cy + radius * Math.sin(angle) - cardHeight / 2);
+            y_val =  (cy + radius * Math.sin(angle) - cardHeight / 1.9);
         }
         
         return {
@@ -93,6 +109,11 @@ function updateGraphs(nodesArr, linksArr) {
         };
     });
 
+
+    // remove all old nodes
+    svg.selectAll("foreignObject").remove();
+
+    // append new ones
     var nodeSelection = svg
                     .selectAll("foreignObject")
                     .data(nodes)
@@ -173,9 +194,8 @@ function updateGraphs(nodesArr, linksArr) {
     
     var simulation = d3.forceSimulation(nodes);
     simulation
-        .force('center', d3.forceCenter(width/2-cardWidth, height/2))
-        .force("links", d3.forceLink(links).id(d => d.id))
-                                ;
+        .force('center', d3.forceCenter((cx - cardWidth / 2), (cy - cardHeight / 1.5)))
+        .force("links", d3.forceLink(links).id(d => d.id));
         /*
         // .force('nodes', d3.forceManyBody().strength(""+cardHeight*-1).distanceMin(cardHeight).distanceMax(cardHeight*2))
         // .force("collide", d3.forceCollide(function(d) {
@@ -210,11 +230,15 @@ function updateGraphs(nodesArr, linksArr) {
         // .force('collide',d3.forceCollide().radius(60).iterations(2));
         */
 
+        // remove all old links
+        svg.selectAll("line").remove();
+        
         let linkSelection = svg
         .selectAll("line")
         .data(links)
         .enter()
         .append("line")
+        // .exit().remove()
         .lower()
             .attr("class","d3-graph-links")
             .attr("stroke", "silver")
@@ -223,62 +247,48 @@ function updateGraphs(nodesArr, linksArr) {
             .attr("y1", d => d.source.y + cardHeight / 2)
             .attr("x2", d => d.target.x + cardWidth / 2.5)
             .attr("y2", d => d.target.y + cardHeight / 4);
-
-    // d3.selectAll(".d3-graph-links").lower();
-
-    // Define the clickNode function
-function clickNode(d) {
-    console.log("\n CLikced node: "+d.id);
-    
-    // Extract the clicked node's ID
-    var clickedNodeId = d.id;
-
-    // clear canvas
-    var svg = d3.select("svg")
-
-
-    // make some global var that has the json for nodes
-    // follow similar code structure as updateGraph and make another function for creating graph
-    
-    // first update new nodes and fetch childs put them in data
-    // and call exit().remove() to remove old nodes
-
-    return;
-    
-    // Shift the layout to make the clicked node the center
-    simulation
-      .force("x", d3.forceX().strength(0.1).x(width / 2))
-      .force("y", d3.forceY().strength(0.1).y(height / 2))
-      .force(
-        "center",
-        d3.forceCenter().x(width / 2).y(height / 2)
-      )
-      .alphaTarget(0.5) // Trigger the animation effect
-      .restart(); // Restart the simulation
-  
-    // Reposition the nodes and links
-    nodeSelection
-      .transition()
-      .duration(500)
-      .attr("transform", function (d) {
-        return "translate(" + (d.x = d.initX) + "," + (d.y = d.initY) + ")";
-      });
-  
-    linkSelection
-      .transition()
-      .duration(500)
-      .attr("x1", function (d) {
-        return d.source.x;
-      })
-      .attr("y1", function (d) {
-        return d.source.y;
-      })
-      .attr("x2", function (d) {
-        return d.target.x;
-      })
-      .attr("y2", function (d) {
-        return d.target.y;
-      });
-  }
   
 }
+
+
+    // Define the clickNode function
+    function clickNode(d) {
+        console.log("\n CLikced node: "+d.id);
+        
+        // Extract the clicked node's ID
+        var clickedNodeId = d.id;
+    
+        // clear canvas
+        // var svg = d3.select("svg")
+    
+    
+        // make some global var that has the json for nodes
+        // follow similar code structure as updateGraph and make another function for creating graph
+        
+        // first update new nodes and fetch childs put them in data
+        // and call exit().remove() to remove old nodes
+    
+        
+        // Shift the layout to make the clicked node the center
+        // simulation
+        //   .force("x", d3.forceX().strength(0.1).x(width / 2))
+        //   .force("y", d3.forceY().strength(0.1).y(height / 2))
+        //   .force(
+        //     "center",
+        //     d3.forceCenter().x(width / 2).y(height / 2)
+        //   )
+        //   .alphaTarget(0.5) // Trigger the animation effect
+        //   .restart(); // Restart the simulation
+      
+        // Reposition the nodes and links
+        // nodeSelection
+        //   .transition()
+        //   .duration(500)
+        //   .attr("transform", function (d) {
+        //     return "translate(" + (d.x = d.initX) + "," + (d.y = d.initY) + ")";
+        //   });
+
+        console.log("fulldata:", graph_json);
+        updateGraphs(graph_json.nodes, graph_json.links, clickedNodeId);
+      }
+
