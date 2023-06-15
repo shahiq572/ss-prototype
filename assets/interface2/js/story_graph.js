@@ -61,7 +61,7 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
     var cy = height / 2;
 
     // Calculate the radius for the nodes, it should be less than half of the SVG's width or height
-    var radius = Math.min(width, height) / 2.5;
+    var radius = Math.min(width, height) / 2.7; // div 2.5
 
     nodes = nodes.map((d, i) => {
         var x_val, y_val;
@@ -73,7 +73,7 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
         } else {
             var angle = (2 * Math.PI * (i - 1)) / (nodes.length - 1); // calculate the angle for this node
             x_val =  (cx + radius * Math.cos(angle) - cardWidth / 2);
-            y_val =  (cy + radius * Math.sin(angle) - cardHeight / 1.9);
+            y_val =  (cy + radius * Math.sin(angle) - cardHeight / 1.6);  // div 1.9
         }
         
         return {
