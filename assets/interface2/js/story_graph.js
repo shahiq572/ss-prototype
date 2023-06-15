@@ -22,12 +22,11 @@ var data_json = d3.json("/assets/interface2/js/graph.json", function(error, grap
 
 })
 
-function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
-    // nodes = nodesArr
-    // filter out the elements whose source is not 0
-
+function updateGraphs(nodesArr, linksArr, centerNodeId = 3) {
+    
     console.log("old links: ", links);
-
+    
+    // filter out the elements whose source is not 0
     var links = linksArr.filter(function(link) {
         return link.source == centerNodeId;
     });
@@ -40,17 +39,10 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
         if(nodes[i].id) {
             nodes[i].remove();
         }
-    }
+    }*/
 
-    // # code for assigning nodes to links without force()
-    // links = links.map(link => {
-    //     return {
-    //         ...link,
-    //         source: nodes.find(node => node.id === link.source),
-    //         target: nodes.find(node => node.id === link.target)
-    //     };
-    // });
-     */
+    
+    
 
     nodes = links.map(function(link) {
         return nodesArr.find(function(node) {
@@ -58,29 +50,11 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
         });
     });
 
-    // if (centerNodeId == 0) {
-    //     nodes.push(nodesArr[0])
-    // }
 
     // The actual center node since we only fecthed thae targets
     nodes.push(nodesArr.find(e => e.id == centerNodeId))
 
     console.log(nodes);
-
-
-
-    
-    /* var linkSelection = svg
-                    .selectAll("line")
-                    .data(links)
-                    .enter()
-                    .append("line")
-                        .attr("stroke", "silver")
-                        .attr("stroke-width", 2); */
-    
-    // To fix root node at center
-    // nodes[3].fx = width/2 - cardWidth/2;
-    // nodes[3].fy = height/2 - cardHeight/2;    
 
     // Calculate the center of the SVG
     var cx = width / 2;
@@ -106,6 +80,15 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
             ...d,
             x: Math.abs(x_val),
             y: Math.abs(y_val)
+        };
+    });
+
+    // # code for assigning nodes to links without force()
+    links = links.map(link => {
+        return {
+            ...link,
+            source: nodes.find(node => node.id === link.source),
+            target: nodes.find(node => node.id === link.target)
         };
     });
 
@@ -192,10 +175,10 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
 
    
     
-    var simulation = d3.forceSimulation(nodes);
-    simulation
-        .force('center', d3.forceCenter((cx - cardWidth / 2), (cy - cardHeight / 1.5)))
-        .force("links", d3.forceLink(links).id(d => d.id));
+    // var simulation = d3.forceSimulation(nodes);
+    // simulation
+        // .force('center', d3.forceCenter((cx - cardWidth / 2), (cy - cardHeight / 1.5)))
+        // .force("links", d3.forceLink(links).id(d => d.id));
         /*
         // .force('nodes', d3.forceManyBody().strength(""+cardHeight*-1).distanceMin(cardHeight).distanceMax(cardHeight*2))
         // .force("collide", d3.forceCollide(function(d) {
@@ -238,13 +221,12 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
         .data(links)
         .enter()
         .append("line")
-        // .exit().remove()
         .lower()
             .attr("class","d3-graph-links")
             .attr("stroke", "silver")
             .attr("stroke-width", 2)
             .attr("x1", d => d.source.x + cardWidth / 2.3)
-            .attr("y1", d => d.source.y + cardHeight / 2)
+            .attr("y1", d => d.source.y + cardHeight / 4)
             .attr("x2", d => d.target.x + cardWidth / 2.5)
             .attr("y2", d => d.target.y + cardHeight / 4);
   
