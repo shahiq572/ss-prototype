@@ -175,6 +175,7 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                     .transition()
                     .duration(700)
                     .style("opacity", 1)
+                    .ease(d3.easeCircleOut)
                     .attr("x", d => d.x + "px")
                     .attr("y", d => d.y + "px");
         
@@ -262,27 +263,14 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
         // first update new nodes and fetch childs put them in data
         // and call exit().remove() to remove old nodes
     
-        
-        // Shift the layout to make the clicked node the center
-        // simulation
-        //   .force("x", d3.forceX().strength(0.1).x(width / 2))
-        //   .force("y", d3.forceY().strength(0.1).y(height / 2))
-        //   .force(
-        //     "center",
-        //     d3.forceCenter().x(width / 2).y(height / 2)
-        //   )
-        //   .alphaTarget(0.5) // Trigger the animation effect
-        //   .restart(); // Restart the simulation
-      
         // Reposition the nodes and links
-        // nodeSelection
+        // d3.select(this)
         //   .transition()
         //   .duration(500)
-        //   .attr("transform", function (d) {
-        //     return "translate(" + (d.x = d.initX) + "," + (d.y = d.initY) + ")";
-        //   });
+        //   .attr("x", (width/2 - cardWidth/2) + "px")
+        //   .attr("y", (height/2 - cardHeight/1.5) + "px")
+                        
 
-        console.log("fulldata:", graph_json);
         updateGraphs(graph_json.nodes, graph_json.links, clickedNodeId);
       }
 
