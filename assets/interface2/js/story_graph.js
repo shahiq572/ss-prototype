@@ -130,7 +130,7 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                                             </div>
                                             <div class="col sm">
                                                 <button class="icon-button" title="Expand Related Results" onClick="clickNode(${d.id})">
-                                                    <img src="../assets/interface2/icons/both-3.png" alt="expand" class="icon-button static" style="width: 30px; height: 30px;" >
+                                                    <img src="../assets/interface2/icons/both-3.png" alt="expand" class="icon-button static" style="width: 34px; height: 34px;" >
                                                 </button>
                                             </div>
                                         </div>
