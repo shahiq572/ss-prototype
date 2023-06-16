@@ -24,15 +24,11 @@ var data_json = d3.json("/assets/interface2/js/graph.json", function(error, grap
 
 function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
     
-    console.log("old links: ", links);
-    
     // filter out the elements whose source is not 0
     var links = linksArr.filter(function(link) {
         return link.source == centerNodeId;
     });
 
-    console.log("new links: ", links);
-    
     // # Code kept incase link selection logic needed
     /*for( var i=1; i<nodes.length;i++) {
     //    links.push( { "source": 0, "target": i } )
@@ -106,7 +102,7 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                         .attr("height", cardHeight+"px")
                         .attr("x", (cx - cardWidth/2) + "px")
                         .attr("y", (cy - cardHeight/1.5) + "px")
-                        .on("click", clickNode)
+                        // .on("click", clickNode)
                         // .call(d3.drag()
                         //     .on("drag", drag))
                             .html( function(d) {
@@ -126,9 +122,17 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <p class="twitter_content minimize" textLength="50">${d.body}</p>
-                                            
-                                            <p class="posted_at"><small><b>Posted At: </b>18 March 2016</small></p>
+                                            <div class="col s12">
+                                                <p class="twitter_content minimize" textLength="50">${d.body}</p>
+                                            </div>
+                                            <div class="col s9">
+                                                <p class="posted_at"><small><b>Posted At: </b>18 March 2016</small></p>
+                                            </div>
+                                            <div class="col sm">
+                                                <button class="icon-button" title="Expand Related Results" onClick="clickNode(${d.id})">
+                                                    <img src="../assets/interface2/icons/both-3.png" alt="expand" class="icon-button static" style="width: 30px; height: 30px;" >
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                     
@@ -168,6 +172,9 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                                             <div class="desc_div">
                                                 <p  class="minimize" text-length="50"> ${d.body} </p>
                                             </div>
+                                            <button class="icon-button" title="Expand Related Results" onClick="clickNode(${d.id})">
+                                                <img src="../assets/interface2/icons/graph-4.png" alt="expand" class="icon-button static" style="width: 30px; height: 30px;" >
+                                            </button>
                                         </div>
                                 `}
                             })
@@ -247,11 +254,11 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
 
 
     // Define the clickNode function
-    function clickNode(d) {
-        console.log("\n CLikced node: "+d.id);
+    function clickNode(clickedNodeId) {
+        console.log("\n CLikced node: " + clickedNodeId);
         
         // Extract the clicked node's ID
-        var clickedNodeId = d.id;
+        // var clickedNodeId = id;
     
         // clear canvas
         // var svg = d3.select("svg")
