@@ -16,10 +16,21 @@
     <script src="../assets/timeline/js/timeline.js"></script>
 </head>
 
+<body>
+
+
 <header>
     <div class="container">
       <!-- <h1>Timeline</h1> -->
       <!-- maybe add some padding to it to make it look like its centered -->
+
+      <div class="search-container">
+        <input type="search" id="search-input" value="Super Bowl Winners" placeholder="Search...">
+        <button id="search-button">
+            <img src="../assets/interface2/icons/search-icon.png" alt="search" class="search-icon">
+        </button>
+      </div>    
+
       <div class="info-panel row">
         <div class="col-2 p-1">
             <div class="row">
@@ -71,8 +82,17 @@
     </div>
 </header>
 
-<body>
-    <h2 class="timline-title text-center mt-4 ">NFL Superbowl winner</h2>
+    <div class="timeline-title-sticky-container">
+        <!-- <div class="col-10"> -->
+            <h2 class="timeline-title  mt-4">NFL Superbowl winner</h2>
+        <!-- </div> -->
+        <!-- <div class="col"> -->
+            <button class="switch-view-btn mt-4" title="Open graph view">
+                Switch to Graph View
+                <img src="../assets/interface2/icons/graph-4.png" alt="switch view" style="width: 40px; height: 37px; margin-left: 2px;"/>
+            </button>
+        <!-- </div> -->
+    </div>
 
 <section class="timeline">
 <div class="container">    
@@ -231,3 +251,5 @@
   </script>
   
 </body>
+
+</html>

@@ -21,7 +21,7 @@ router.get('/timeline-demo', function(req, res, next) {
   } else {
   }
   results = require("../assets/timeline/js/timeline_demo.json").results;
-  console.log(results);
+  console.log(results[1]);
   res.render('timeline1', {results: results});
 });
 
