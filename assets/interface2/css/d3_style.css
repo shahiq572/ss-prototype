@@ -92,6 +92,7 @@ nav {
 .title {
     margin-bottom: 0;
     line-height: 1;
+    cursor: pointer;
 }
 
 .twitter_content{

@@ -112,15 +112,17 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                                         <!--div class="row">
                                             <span class="dot" style="background-color: ${d.sentColorCode}"></span>
                                         </div-->
-                                        <div class="row valign-center" style="margin: 0px;">
-                                            <div class="col s3">
-                                                <img src="../assets/interface2/icons/twitter.png" alt="" class="circle responsive-img" style="width: 40px; height: 40px;">
+                                        <a href="${d.link}" target="_blank">
+                                            <div class="row valign-center" style="margin: 0px;">
+                                                <div class="col s3">
+                                                    <img src="../assets/interface2/icons/twitter.png" alt="" class="circle responsive-img" style="width: 40px; height: 40px;">
+                                                </div>
+                                                <div class="col s9">
+                                                    <p class="title" style="margin: 0px;"><b>${d.title}</b></p>
+                                                    <small style=" color: #a7a7a7">${d.subtitle}</small>
+                                                </div>
                                             </div>
-                                            <div class="col s9">
-                                                <a class="title" href="${d.link}" style="margin: 0px;"><b>${d.title}</b></a>
-                                                <small style=" color: #a7a7a7">${d.subtitle}</small>
-                                            </div>
-                                        </div>
+                                        </a>
                                         <div class="row">
                                             <div class="col s12">
                                                 <p class="twitter_content minimize" textLength="50">${d.body}</p>
