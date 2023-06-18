@@ -22,26 +22,18 @@
 </head>
 
 <body>
-    <div class="container">
-        <nav class="no-shadows">
-            <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Social Searcher</a>
-                <a href="#" class="sidenav-trigger navbar-icon" data-target="mobile-nav">
-                    <i class="material-icons black-text">menu</i>
-                </a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Trends</a></li>
-                    <li><a href="#">Timeline</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#" class="highlight">Sign in</a></li>
-                </ul>
-            </div>
-        </nav>
-        
+    <div class="search-container">
+        <h5 class="brand-logo">
+            Graph View
+        </h5>
+        <button class="switch-view-btn mt-4 float-right" title="Open graph view" onclick="window.location.href='timeline-demo'">
+            Switch to Timeline View
+            <img src="../assets/interface2/icons/bar-chart.png" alt="switch view" style="width: 40px; height: 37px; margin-left: 2px;"/>
+        </button>
     </div>
+
     <div class="graph">
-        <h4 class="center">Graph</h4>
+        <h4 class="center mt-4">NFL Super Bowl</h4>
         <div class="d3_graph" id="aaa">
             <svg></svg>
         </div>
