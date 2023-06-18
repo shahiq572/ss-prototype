@@ -7,6 +7,7 @@ var cardWidth = 350;
 var cardHeight = 300;
 
 var currentNode = 0;
+var clickCount = 0;
 
 var graph_json;
 
@@ -112,7 +113,7 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                                         <!--div class="row">
                                             <span class="dot" style="background-color: ${d.sentColorCode}"></span>
                                         </div-->
-                                        <a href="${d.link}" target="_blank">
+                                        <a href="${d.link}" target="_blank" data-goal="${d.goal}">
                                             <div class="row valign-center" style="margin: 0px;">
                                                 <div class="col s3">
                                                     <img src="../assets/interface2/icons/twitter.png" alt="" class="circle responsive-img" style="width: 40px; height: 40px;">
@@ -252,6 +253,8 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
             .attr("x2", d => d.target.x + cardWidth / 2.5)
             .attr("y2", d => d.target.y + cardHeight / 4);
 
+        attachListenerToAnchors();
+
         }
 
 
@@ -281,5 +284,23 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                         
 
         updateGraphs(graph_json.nodes, graph_json.links, clickedNodeId);
-      }
+    }
 
+    function attachListenerToAnchors() {
+        const anchors = document.getElementsByTagName('a');
+        
+        for (let i = 0; i < anchors.length; i++) {
+            anchors[i].addEventListener('click', function(event) {
+                const isGoal = event.currentTarget.getAttribute("data-goal") == 'true';
+                event.preventDefault();
+                clickCount++;
+
+                // console.log("click count", isGoal, event.currentTarget);
+
+                if (isGoal == true) {
+                    const timeTaken = Date.now() - window.performance.timing.navigationStart;
+                    alert('Answer found! Total time taken: ' + timeTaken/1000 + 's' + ' and total clicks: ' + clickCount);
+                }
+            });
+        }
+    }

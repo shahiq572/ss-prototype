@@ -27,7 +27,7 @@
 }
 
 .card_design {
-    padding: 5px 14px 5px 14px;
+    padding: 13px 14px 10px 14px;
     background: red;
     border-radius: 20px !important;
     /* cursor: all-scroll; */
@@ -100,6 +100,7 @@ nav {
     margin: 0px;
     text-align: justify;
     text-justify: inter-word;
+    margin-bottom: 8px;
 }
 
 .youtube_content {

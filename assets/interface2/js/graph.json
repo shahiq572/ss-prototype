@@ -14,7 +14,8 @@
       "timestamp": 61903822,
       "sentColorCode": "#b3b3b3",
       "source": "0",
-      "target": "1"
+      "target": "1",
+      "goal": false
     },
     {
       "id": 1,
@@ -30,7 +31,8 @@
       "timestamp": 61903822,
       "sentColorCode": "#b3b3b3",
       "source": "1",
-      "target": "0"
+      "target": "0",
+      "goal": true
     },
     {
       "id": 2,
@@ -45,7 +47,8 @@
       },
       "sentColorCode": "#b3b3b3",
       "source": "2",
-      "target": "0"
+      "target": "0",
+      "goal": false
     },
     {
       "id": 3,
@@ -60,7 +63,8 @@
       },
       "sentColorCode": "#b3b3b3",
       "source": "3",
-      "target": "0"
+      "target": "0",
+      "goal": false
     },
     {
       "id": 4,
@@ -68,37 +72,40 @@
       "title": "Some tweet related to Song #1",
       "subtitle": "@NFL",
       "link": "https://twitter.com/RocNation/status/1625238964922908672?s=20",
-      "body": "\"Where have you been all my life\"\n@Rihanna",
+      "body": "The performance was ok...",
       "metadata": {
         "medialink": "https://twitter.com/i/status/1625226017504899072",
         "tags": "#SBLVII #Rihanna"
       },
       "sentColorCode": "#b3b3b3",
       "source": "4",
-      "target": "3"
+      "target": "3",
+      "goal": false
     },
     {
       "id": 5,
       "tag": "twitter",
-      "title": "Some tweet related to Song #2",
-      "subtitle": "@NFL",
-      "link": "https://twitter.com/RocNation/status/1625238964922908672?s=20",
-      "body": "\"Where have you been all my life\"\n@Rihanna",
+      "title": "Lan Downder",
+      "subtitle": "@LDownder",
+      "link": "https://twitter.com/LDownder/status/1625261765683552257?s=20",
+      "body": "This was a bad performance. I feel sorry for The Weekend who had such an elaborate performance, he could have gotten away with barely moving. Just Jay-Z lining his friends pockets.",
       "metadata": {
         "medialink": "https://twitter.com/i/status/1625226017504899072",
         "tags": "#SBLVII #Rihanna"
       },
       "sentColorCode": "#b3b3b3",
       "source": "5",
-      "target": "3"
+      "target": "3",
+      "goal": true
     }
   ]
   ,
   "links": [
-    { "source": 0, "target": 1},
+    { "source": 0, "target": 2},
     { "source": 0, "target": 3},
     { "source": 1, "target": 0},
     { "source": 2, "target": 0},
+    { "source": 2, "target": 1},
     { "source": 3, "target": 2},
     { "source": 3, "target": 4},
     { "source": 3, "target": 5},
