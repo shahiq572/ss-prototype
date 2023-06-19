@@ -300,6 +300,11 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                     const timeTaken = Date.now() - sessionStorage.getItem("timestart");
                     alert('Answer found! Total time taken: ' + timeTaken/1000 + 's' + ' and total clicks: ' + clickCount);
 
+                    sessionStorage.removeItem("clickCounter");
+                    sessionStorage.removeItem("timestart");
+                    clickCount  = 0;
+                    sessionStorage.setItem("timestart", Date.now());
+
                     const data = {
                         name: "demotask_graph",
                         clickCount: clickCount,
