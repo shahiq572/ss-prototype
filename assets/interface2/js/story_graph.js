@@ -256,6 +256,8 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
     // Define the clickNode function
     function clickNode(clickedNodeId) {
         console.log("\n CLikced node: " + clickedNodeId);
+        clickCount++;
+        sessionStorage.setItem("clickCounter", clickCount);
         
         // Extract the clicked node's ID
         // var clickedNodeId = id;
