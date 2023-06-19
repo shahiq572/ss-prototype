@@ -42,5 +42,24 @@ router.post('/save-results', function (req, res) {
 })
 
 
+/* Google Tasks */
+
+// Task Set A
+router.get('/g_task1a', function(req, res, next) {
+  res.render('./googletasks/task1a_queen/queenelizabeth.ejs', 
+              { title: 'Task 1 - Queen Elizabeth',
+                taskname: "task1a",
+                pageHeader: "Queen Elizabeth"
+              });
+});
+
+router.get('/g_task2a', function(req, res, next) {
+  res.render('./googletasks/task2a_brexit/brexit - Google Search.ejs', 
+              { title: 'Task 2 - Brexit transition period',
+                taskname: "task2a",
+                pageHeader: "Brexit"
+              });
+});
+
 
 module.exports = router;
