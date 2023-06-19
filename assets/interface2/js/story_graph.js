@@ -300,6 +300,27 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                 if (isGoal == true) {
                     const timeTaken = Date.now() - window.performance.timing.navigationStart;
                     alert('Answer found! Total time taken: ' + timeTaken/1000 + 's' + ' and total clicks: ' + clickCount);
+
+                    const data = {
+                        name: "demotask_graph",
+                        clickCount: clickCount,
+                        timeTaken: timeTaken/1000
+                    };
+    
+                    fetch('/save-results', {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
                 }
             });
         }

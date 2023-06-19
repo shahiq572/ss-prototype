@@ -1,4 +1,5 @@
 var express = require('express');
+const fs = require("fs");
 var router = express.Router();
 
 /* GET home page. */
@@ -24,6 +25,21 @@ router.get('/timeline-demo', function(req, res, next) {
   console.log(results[1]);
   res.render('timeline1', {results: results});
 });
+
+
+router.post('/save-results', function (req, res) {
+  
+  fileContent = req.body.timeTaken + "," + req.body.clickCount;
+
+  if (!fs.existsSync('./data/')){
+    fs.mkdirSync('./data/');
+  }
+
+  fs.writeFile("./data/"+req.body.name+'_'+Date.now()+'.csv', fileContent , function(err) {
+    if (err) throw err;
+    console.log('Saved!', req.body.name);
+  });
+})
 
 
 
