@@ -15,7 +15,7 @@ router.get('/demo1', function(req, res, next) {
 
 /* GET timelines */
 router.get('/timeline-demo', function(req, res, next) {
-  console.log("reqbody:", req.query.q);
+  // console.log("reqbody:", req.query.q);
   var results;
   if(req.query.q == "") {
     results = require("../assets/timeline/js/timeline_demo.json").results;
@@ -48,15 +48,15 @@ router.post('/save-results', function (req, res) {
 router.get('/g_task1a', function(req, res, next) {
   res.render('./googletasks/task1a_queen/queenelizabeth.ejs', 
               { title: 'Task 1 - Queen Elizabeth',
-                taskname: "task1a",
+                taskname: "gtask1a",
                 pageHeader: "Queen Elizabeth"
               });
 });
 
 router.get('/g_task2a', function(req, res, next) {
-  res.render('./googletasks/task2a_brexit/brexit - Google Search.ejs', 
+  res.render('./googletasks/task2a_brexit/brexit.ejs', 
               { title: 'Task 2 - Brexit transition period',
-                taskname: "task2a",
+                taskname: "gtask2a",
                 pageHeader: "Brexit"
               });
 });

@@ -137,9 +137,21 @@ var kj=function(a,b,c){_.Gd.log(46,{att:a,max:b,url:c})},mj=function(a,b,c){_.Gd
 ;});})();(function(){google.drty&&google.drty(undefined,true);})();});</script><div></div><div jscontroller="MTV2Lb" style="display:none" src="/uviewer?q=queen+elizabeth&amp;origin=https%3A%2F%2Fwww.google.com" id="Rvx4kc" jsaction="rcuQ6b:npT2md;u0pjoe:Hq0NGf"></div><div jscontroller="W0N1pf" class="fp-nh" id="DDeXhf" jsaction="u0pjoe:Hq0NGf"></div><div id="lfootercc"><script nonce="ijWaVieUHn0d8v6T5lxjGA">(function(){for(var i in google.iir||{}){_setImagesSrc([i],google.iir[i]);}google.iir={};})();google.jslm=3;</script><script nonce="ijWaVieUHn0d8v6T5lxjGA">(function(){var xsrfTokens='{\x22ff8SWb\x22:\x22ACBJSv8KCZyT6hPH6F-dxf4RLkP-JeF3XQ:1687213440739\x22,\x22UPgwmc\x22:\x22ACBJSv_RihW99Pg3x78GpeHYmJXeTBC8Ww:1687213440739\x22}';google.xsrf=JSON.parse(xsrfTokens);})();</script><div id="reviewDialog" data-async-context="async_id_prefix:" data-jiis="up" data-async-type="reviewDialog" data-async-context-required="async_id_prefix" class="yp"></div><div id="dbg_"></div></div>
 
 <script>
+    var clickCount = 0;
+
+    // Time attribute when user started navigating the page
+    if (sessionStorage.getItem("<%=taskname%>_timestart") === null ) {
+        sessionStorage.setItem("<%=taskname%>_timestart", window.performance.timing.navigationStart);
+    }
+
+    if (sessionStorage.getItem("<%=taskname%>_clickCounter") === null ) {
+        sessionStorage.setItem("<%=taskname%>_clickCounter", 0);
+    } else {
+        clickCount = sessionStorage.getItem("<%=taskname%>_clickCounter");
+    }
+
     // Get all the anchor tags in the document
     var anchors = document.getElementsByTagName('a');
-    clickCount = 0;
 
     // Loop through all anchors
     for(var i = 0; i < anchors.length; i++) {
@@ -150,9 +162,37 @@ var kj=function(a,b,c){_.Gd.log(46,{att:a,max:b,url:c})},mj=function(a,b,c){_.Gd
             var href = event.currentTarget.getAttribute('href');
             event.preventDefault();
             clickCount++;
+            sessionStorage.setItem("<%=taskname%>_clickCounter", 0);
 
             if(href === "burtonstreet_goal") {
-                alert("Task Complete ! " + clickCount);
+                timeTaken = Date.now() - sessionStorage.getItem("<%=taskname%>_timestart");
+                    
+                const data = {
+                    name: "<%=taskname%>",
+                    clickCount: clickCount,
+                    timeTaken: timeTaken/1000
+                };
+
+                fetch('/save-results', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+
+                sessionStorage.removeItem("<%=taskname%>_clickCounter");
+                sessionStorage.setItem("<%=taskname%>_timestart", Date.now());
+                clickCount  = 0;
+
+                alert("Task Complete! Click OK and close the tab.");
             }
         });
     }
