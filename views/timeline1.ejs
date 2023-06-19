@@ -224,9 +224,24 @@
 </section>
 
 <script>
+
+    clickCount = 0
+    // Time attribute when user started navigating the page
+    if (sessionStorage.getItem("timestart") === null ) {
+        sessionStorage.setItem("timestart", window.performance.timing.navigationStart);
+    }
+
+    if (sessionStorage.getItem("clickCounter") === null ) {
+        sessionStorage.setItem("clickCounter", 0);
+    } else {
+        clickCount = sessionStorage.getItem("clickCounter");
+    }
+
+    
+
     // Get all the anchor tags in the document
     const links = document.getElementsByTagName('a');
-    clickCount = 0;
+    
     // Attach a click event listener to each anchor tag
     for (let i = 0; i < links.length; i++) {
       links[i].addEventListener('click', function(event) {
@@ -236,10 +251,12 @@
           // Stop the default redirect behavior of the anchor tag
           event.preventDefault();
           
-            clickCount++;
+          clickCount++;
+          sessionStorage.setItem("clickCounter", clickCount);
+
         if (isGoal) {
           // Show the alert message with the total time
-          const timeTaken = Date.now() - window.performance.timing.navigationStart;
+          const timeTaken = Date.now() - sessionStorage.getItem("timestart");
           alert('Answer found! Total time taken: ' + timeTaken/1000 + 's' + ' and total clicks: ' + clickCount);
 
           const data = {

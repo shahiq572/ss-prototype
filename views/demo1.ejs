@@ -44,4 +44,22 @@
 <script src="../assets/interface2/js/story_graph.js"></script>
 
 <script src="../assets/interface2/js/index.js"></script>
+
+<script>
+    
+    var clickCount = 0;
+
+    // Time attribute when user started navigating the page
+    if (sessionStorage.getItem("timestart") === null ) {
+        sessionStorage.setItem("timestart", window.performance.timing.navigationStart);
+    }
+
+    if (sessionStorage.getItem("clickCounter") === null ) {
+        sessionStorage.setItem("clickCounter", 0);
+    } else {
+        clickCount = sessionStorage.getItem("clickCounter");
+    }
+
+</script>
+
 </head>

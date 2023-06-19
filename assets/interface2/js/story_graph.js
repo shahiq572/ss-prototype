@@ -7,7 +7,6 @@ var cardWidth = 350;
 var cardHeight = 300;
 
 var currentNode = 0;
-var clickCount = 0;
 
 var graph_json;
 
@@ -38,8 +37,6 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
         }
     }*/
 
-    
-    
 
     nodes = links.map(function(link) {
         return nodesArr.find(function(node) {
@@ -50,8 +47,6 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
 
     // The actual center node since we only fecthed thae targets
     nodes.push(nodesArr.find(e => e.id == centerNodeId))
-
-    console.log(nodes);
 
     // Calculate the center of the SVG
     var cx = width / 2;
@@ -294,11 +289,13 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                 const isGoal = event.currentTarget.getAttribute("data-goal") == 'true';
                 event.preventDefault();
                 clickCount++;
+                sessionStorage.setItem("clickCounter", clickCount);
+
 
                 // console.log("click count", isGoal, event.currentTarget);
 
                 if (isGoal == true) {
-                    const timeTaken = Date.now() - window.performance.timing.navigationStart;
+                    const timeTaken = Date.now() - sessionStorage.getItem("timestart");
                     alert('Answer found! Total time taken: ' + timeTaken/1000 + 's' + ' and total clicks: ' + clickCount);
 
                     const data = {
