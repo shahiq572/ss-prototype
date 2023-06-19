@@ -53,7 +53,7 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
     var cy = height / 2;
 
     // Calculate the radius for the nodes, it should be less than half of the SVG's width or height
-    var radius = Math.min(width, height) / 2.7; // div 2.5
+    var radius = Math.min(width, height) / 2.5; // div 2.5
 
     nodes = nodes.map((d, i) => {
         var x_val, y_val;

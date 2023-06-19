@@ -22,19 +22,20 @@
 </head>
 
 <body>
-    <div class="search-container">
-        <h5 class="brand-logo">
-            Graph View
-        </h5>
-        <button class="switch-view-btn mt-4 float-right" title="Open graph view" onclick="window.location.href='timeline-demo'">
-            Switch to Timeline View
-            <img src="../assets/interface2/icons/bar-chart.png" alt="switch view" style="width: 40px; height: 37px; margin-left: 2px;"/>
-        </button>
-    </div>
+    
 
     <div class="graph">
-        <h4 class="center mt-4">NFL Super Bowl</h4>
+        <div class="search-container">
+            <h5 class="brand-logo">
+                Graph View
+            </h5>
+            <button class="switch-view-btn mt-4 float-right" title="Open graph view" onclick="window.location.href='timeline-demo'">
+                Switch to Timeline View
+                <img src="../assets/interface2/icons/bar-chart.png" alt="switch view" style="width: 40px; height: 37px; margin-left: 2px;"/>
+            </button>
+        </div>
         <div class="d3_graph" id="aaa">
+            <h4 class="center mt-4">NFL Super Bowl</h4>
             <svg></svg>
         </div>
     </div>

@@ -163,6 +163,11 @@ iframe .responsive-video {
 	height: 100px;
     margin: auto;
     padding: 2%;
+    position: sticky;
+	position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: whitesmoke;
  }
  
  #search-input {
