@@ -128,7 +128,8 @@
 
 <script>
 
-    clickCount = 0
+    var clickCount = 0;
+
     // Time attribute when user started navigating the page
     if (sessionStorage.getItem("timestart") === null ) {
         sessionStorage.setItem("timestart", window.performance.timing.navigationStart);
@@ -162,11 +163,6 @@
           const timeTaken = Date.now() - sessionStorage.getItem("timestart");
           alert('Task Complete. Please click OK and close the tab.');
 
-          sessionStorage.removeItem("clickCounter");
-          sessionStorage.removeItem("timestart");
-          clickCount  = 0;
-          sessionStorage.setItem("timestart", Date.now());
-
           const data = {
                 name: "task2a",
                 clickCount: clickCount,
@@ -187,6 +183,12 @@
             .catch((error) => {
                 console.error('Error:', error);
             });
+
+            
+          sessionStorage.removeItem("clickCounter");
+          sessionStorage.removeItem("timestart");
+          clickCount  = 0;
+          sessionStorage.setItem("timestart", Date.now());
         }
       });
     }

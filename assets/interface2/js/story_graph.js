@@ -295,11 +295,6 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                     const timeTaken = Date.now() - sessionStorage.getItem("timestart");
                     alert('Task Complete. Please click OK and close the tab.');
 
-                    sessionStorage.removeItem("clickCounter");
-                    sessionStorage.removeItem("timestart");
-                    clickCount  = 0;
-                    sessionStorage.setItem("timestart", Date.now());
-
                     const data = {
                         name: taskname,
                         clickCount: clickCount,
@@ -320,6 +315,11 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                     .catch((error) => {
                         console.error('Error:', error);
                     });
+                    
+                    sessionStorage.removeItem("clickCounter");
+                    sessionStorage.removeItem("timestart");
+                    clickCount  = 0;
+                    sessionStorage.setItem("timestart", Date.now());
                 }
             });
         }
