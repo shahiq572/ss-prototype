@@ -134,14 +134,14 @@
     var clickCount = 0;
 
     // Time attribute when user started navigating the page
-    if (sessionStorage.getItem("2a_timestart") === null ) {
-        sessionStorage.setItem("2a_timestart", window.performance.timing.navigationStart);
+    if (sessionStorage.getItem("3a_timestart") === null ) {
+        sessionStorage.setItem("3a_timestart", window.performance.timing.navigationStart);
     }
 
-    if (sessionStorage.getItem("2a_clickCounter") === null ) {
-        sessionStorage.setItem("2a_clickCounter", 0);
+    if (sessionStorage.getItem("3a_clickCounter") === null ) {
+        sessionStorage.setItem("3a_clickCounter", 0);
     } else {
-        clickCount = sessionStorage.getItem("2a_clickCounter");
+        clickCount = sessionStorage.getItem("3a_clickCounter");
     }
 
     
@@ -159,11 +159,11 @@
           event.preventDefault();
           
           clickCount++;
-          sessionStorage.setItem("2a_clickCounter", clickCount);
+          sessionStorage.setItem("3a_clickCounter", clickCount);
 
         if (isGoal) {
           // Show the alert message with the total time
-          const timeTaken = Date.now() - sessionStorage.getItem("2a_timestart");
+          const timeTaken = Date.now() - sessionStorage.getItem("3a_timestart");
           alert('Task Complete. Please click OK and close the tab.');
 
           const data = {
@@ -188,10 +188,10 @@
             });
 
             
-          sessionStorage.removeItem("2a_clickCounter");
-          sessionStorage.removeItem("2a_timestart");
+          sessionStorage.removeItem("3a_clickCounter");
+          sessionStorage.removeItem("3a_timestart");
           clickCount  = 0;
-          sessionStorage.setItem("2a_timestart", Date.now());
+          sessionStorage.setItem("3a_timestart", Date.now());
         }
       });
     }
