@@ -61,5 +61,13 @@ router.get('/g_task2a', function(req, res, next) {
               });
 });
 
+router.get('/g_task3a', function(req, res, next) {
+  res.render('./googletasks/task3a_hopkins/anthony_hopkins.ejs', 
+              { title: 'Task 3 - Anthony Hopkins',
+                taskname: "gtask3a",
+                pageHeader: "Anthony Hopkins"
+              });
+});
+
 
 module.exports = router;
