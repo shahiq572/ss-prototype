@@ -3,12 +3,12 @@
       {
         "id": 0,
         "tag": "twitter",
-        "title": "King to keep his mother's Royal Ascot tradition alive",
-        "subtitle": "The Telegraph UK",
-        "link": "https://www.telegraph.co.uk/royal-family/2023/06/19/king-charles-every-day-royal-ascot-elizabeth-ii-tradition/",
-        "body": "Charles III will mirror Elizabeth II's devotion and attend every day of the prestigious horse racing festival.",
+        "title": "Sir Anthony Hopkins has described his work in Marvel's Thor films as \"pointless acting\".",
+        "subtitle": "BBC",
+        "link": "https://www.bbc.com/news/uk-wales-65819559",
+        "body": "\"If you're sitting in front of a green screen, it's pointless acting it,\" Sir Anthony told the New Yorker. \"They put me in armour; they shoved a beard on me,\" he told the magazine.",
         "metadata": {
-          "medialink": "",
+          "medialink": "./prototypetasks/task3a/timeline1.png",
           "tags": ""
         },
         "date": "19 Jun 2023",
@@ -18,15 +18,15 @@
       {
         "id": 1,
         "tag": "twitter",
-        "title": "Kate Middleton Channels Queen Elizabeth's Final Buckingham Palace Balcony Appearance",
-        "subtitle": "Town and Country Mag",
-        "link": "https://www.townandcountrymag.com/society/tradition/a44232704/kate-middleton-queen-elizabeth-symbolism-final-buckingham-palace-balcony-appearance/",
-        "body": "The Princess of Wales, wearing a bright green dress by Andrew Gn and a hat by Philip Treacy, appeared to channel the last appearance Queen Elizabeth ever made on the Buckingham Palace balcony during her Platinum Jubilee weekend last year.",
+        "title": "When Anthony Hopkins was ready to quit acting until Thor and Odin came his way: I was gonna give it up",
+        "subtitle": "The Indian Express",
+        "link": "https://indianexpress.com/article/entertainment/hollywood/anthony-hopkins-quit-acting-until-mcu-thor-odin-came-his-way-7694686/",
+        "body": "On the occasion of celebrated actor Anthony Hopkins' birthday, we revisit the time when he wanted to quit acting, but didn't, all thanks to the 2011 Marvel release Thor.",
         "metadata": {
-          "medialink": "./prototypetasks/task1a/timeline1.jpg",
-          "tags": "#SBLVII"
+          "medialink": "",
+          "tags": ""
         },
-        "date": "17 Jun 2023",
+        "date": "31 Dec 2021",
         "timestamp": 1680554483,
         "sentColorCode": "#b3b3b3",
         "goal": "false"
@@ -34,15 +34,15 @@
       {
         "id": 2,
         "tag": "twitter",
-        "title": "King takes part in first Trooping the Colour ceremony as monarch",
-        "subtitle": "The Independent",
+        "title": "Anthony Hopkins Shares Delightful Throwback Video From Thor: Ragnarok Set",
+        "subtitle": "Comicbook",
         "link": "https://www.independent.co.uk/news/uk/charles-the-king-prince-of-wales-elizabeth-ii-whitehall-b2359442.html",
-        "body": "This is the first time Charles has taken part in the annual ceremony on Horse Guards Parade in Whitehall as the head of state.",
+        "body": "Fun memories on set of Thor... Happy Saturday everyone, he wrote. Hopkins credited Juan Miguel for taking the video. Many fans were quick to comment on Hopkins' post, clearly loving the behind-the-scenes fun.",
         "metadata": {
-          "medialink": "./prototypetasks/task1a/timeline2.jpg",
-          "tags": "#SBLVII"
+          "medialink": "",
+          "tags": ""
         },
-        "date": "16 Jun 2023",
+        "date": "13 Apr 2019",
         "timestamp": 1680554483,
         "sentColorCode": "#b3b3b3",
         "goal": "false"
@@ -50,43 +50,43 @@
       {
         "id": 3,
         "tag": "twitter",
-        "title": "Kate Middleton, Prince William to Celebrate King's Coronation in Scotland",
-        "subtitle": "People",
-        "link": "https://people.com/kate-middleton-prince-william-travel-scotland-celebrate-king-charles-coronation-edinburgh-royal-week-7510268",
-        "body": "Kate Middleton and Prince William will join King Charles and Queen Camilla in Scotland on July 5 for Edinburgh's celebration of the...",
+        "title": "Mel Gibson Could Have Played Odin In The Thor Movies",
+        "subtitle": "Gizmodo",
+        "link": "https://www.gizmodo.com.au/2016/05/mel-gibson-could-have-played-odin-in-the-thor-movies/",
+        "body": "Considering how much controversy has surrounded Mel Gibson, it’s still odd how often he gets linked to the Marvel Cinematic Universe. Rumours have swirled about him as an Avenger, a director and now Gibson himself confirmed a totally different connection — to the role of Thors father.",
         "metadata": {
-          "medialink": "",
-          "tags": "#SBLVII #Rihanna"
+          "medialink": "./prototypetasks/task3a/timeline2.png",
+          "tags": ""
         },
-        "date": "12 Jun 2023",
+        "date": "27 May 2016",
         "goal": "false"
       },
       {
         "id": 4,
         "tag": "article",
-        "title": "King Charles III crowned in Westminster Abbey",
-        "subtitle": "Politico",
-        "link": "https://www.politico.eu/article/king-charles-iii-crowned-westminster-abbey/",
-        "body": "LONDON — In a ceremony of pageantry, quirks and ancient tradition, King Charles III, Britain's 62nd monarch, was on Saturday officially...",
+        "title": "First Image of Odin and Loki from THOR; Marvel Post-Converting THOR and CAPTAIN AMERICA into 3D",
+        "subtitle": "collider",
+        "link": "https://collider.com/thor-captain-america-marvel-post-converting-3d-chris-hemsworth-anthony-hopkins-tom-hiddleston-image/",
+        "body": "We have our first look at Odin and Loki from THOR, plus the announcement that Marvel is post-converting both THOR and CAPTAIN AMERICA to 3D.",
         "metadata": {
-          "medialink": "",
+          "medialink": "./prototypetasks/task3a/timeline1.png",
           "tags": "#SBLVII #Rihanna"
         },
-        "date": "19 May 2023",
+        "date": "14 Jul 2010",
         "goal": "false"
       },
       {
         "id": 5,
         "tag": "twitter",
-        "title": "Queen Elizabeth II, England's longest reigning monarch, passes away",
-        "subtitle": "The Oakland Post",
-        "link": "https://oaklandpostonline.com/43024/uncategorized/queen-elizabeth-ii-englands-longest-reigning-monarch-passes-away/",
-        "body": "When Queen Elizabeth II died Sept. 8, it marked the end of Britain's longest-reigning monarch. At the time of her coronation in 1953,...",
+        "title": "Sir Anthony Hopkins Cast as Odin in Thor!?",
+        "subtitle": "ScreenRant",
+        "link": "https://screenrant.com/anthony-hopkins-cast-as-odin-in-thor/",
+        "body": "I guess those rumors of Brian Blessed playing Odin in Marvel Studios' upcoming Thor movie aren't coming to fruition. Who needs him when you have a knighted Oscar winner in Sir Anthony Hopkins!",
         "metadata": {
-          "medialink": "",
-          "tags": "#SBLVII #Rihanna"
+          "medialink": "/prototypetasks/task3a/timeline3.png",
+          "tags": ""
         },
-        "date": "19 Sep 2022",
+        "date": "30 Oct 2009",
         "goal": "false"
       }
     ]
