@@ -52,14 +52,14 @@
     var clickCount = 0;
 
     // Time attribute when user started navigating the page
-    if (sessionStorage.getItem("timestart") === null ) {
-        sessionStorage.setItem("timestart", window.performance.timing.navigationStart);
+    if (sessionStorage.getItem("1a_timestart") === null ) {
+        sessionStorage.setItem("1a_timestart", window.performance.timing.navigationStart);
     }
 
-    if (sessionStorage.getItem("clickCounter") === null ) {
-        sessionStorage.setItem("clickCounter", 0);
+    if (sessionStorage.getItem("1a_clickCounter") === null ) {
+        sessionStorage.setItem("1a_clickCounter", 0);
     } else {
-        clickCount = sessionStorage.getItem("clickCounter");
+        clickCount = sessionStorage.getItem("1a_clickCounter");
     }
 
 </script>
