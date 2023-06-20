@@ -53,7 +53,7 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
     var cy = height / 2;
 
     // Calculate the radius for the nodes, it should be less than half of the SVG's width or height
-    var radius = Math.min(width, height) / 2.5; // div 2.5
+    var radius = Math.min(width, height) / 2.3; // div 2.5
 
     nodes = nodes.map((d, i) => {
         var x_val, y_val;
@@ -64,8 +64,8 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
             y_val =  (cy - cardHeight / 1.5);
         } else {
             var angle = (2 * Math.PI * (i - 1)) / (nodes.length - 1); // calculate the angle for this node
-            x_val =  (cx + radius * Math.cos(angle) - cardWidth / 2);
-            y_val =  (cy + radius * Math.sin(angle) - cardHeight / 1.6);  // div 1.9
+            x_val =  (cx + radius * Math.cos(angle) - cardWidth / 1.8);
+            y_val =  (cy + radius * Math.sin(angle) - cardHeight / 1.7);  // div 1.9
         }
         
         return {
@@ -254,29 +254,9 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
         clickCount++;
         sessionStorage.setItem("clickCounter", clickCount);
         
-        // Extract the clicked node's ID
-        // var clickedNodeId = id;
-    
-        // clear canvas
-        // var svg = d3.select("svg")
-    
-    
-        // make some global var that has the json for nodes
-        // follow similar code structure as updateGraph and make another function for creating graph
-        
-        // first update new nodes and fetch childs put them in data
-        // and call exit().remove() to remove old nodes
-    
-        // Reposition the nodes and links
-        // d3.select(this)
-        //   .transition()
-        //   .duration(500)
-        //   .attr("x", (width/2 - cardWidth/2) + "px")
-        //   .attr("y", (height/2 - cardHeight/1.5) + "px")
-                        
-
         updateGraphs(graph_json.nodes, graph_json.links, clickedNodeId);
     }
+
 
     function attachListenerToAnchors() {
         const anchors = document.getElementsByTagName('a');
