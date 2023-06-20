@@ -1,0 +1,139 @@
+{
+  "nodes": [
+    {
+      "id": 0,
+      "tag": "op",
+      "title": "Elizabeth II",
+      "subtitle": "Wikipedia",
+      "link": "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjUkafRxtH_AhVWBDQIHbgFDpEQmhN6BAgiEAI&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FAnthony_Hopkins&usg=AOvVaw15LtbSDJ080aeGeFmnz2_Y&opi=89978449",
+      "body": "Sir Philip Anthony Hopkins CBE is a Welsh actor, director, and producer. One of Britain's most recognisable and prolific actors, he is known for his performances on the screen and stage",
+      "metadata": {
+        "medialink": "=",
+        "tags": ""
+      },
+      "date": "",
+      "timestamp": 61903822,
+      "sentColorCode": "#b3b3b3",
+      "source": "0",
+      "target": "1",
+      "goal": false
+    },
+    {
+      "id": 1,
+      "tag": "article",
+      "title": "Why Anthony Hopkins Found His Role As The MCU's Odin 'Pointless'",
+      "subtitle": "Slash Film",
+      "link": "https://www.telegraph.co.uk/royal-family/2023/06/19/king-charles-every-day-royal-ascot-elizabeth-ii-tradition/",
+      "body": "The Oscar winner cut his teeth doing Shakespeare plays in the '60s. No wonder he didn't need to act to play Odin in a superhero movie.",
+      "metadata": {
+        "medialink": "",
+        "tags": ""
+      },
+      "date": "19 Jun 2023",
+      "timestamp": 1680554483,
+      "source": "1",
+      "target": "0",
+      "goal": false
+    },
+    {
+      "id": 2,
+      "tag": "article",
+      "title": "Anthony Hopkins to Play Roman Emperor in Roland Emmerich’s Gladiator Drama ‘Those About to Die’",
+      "subtitle": "Variety",
+      "link": "https://variety.com/2023/tv/global/anthony-hopkins-roland-emmerich-gladiator-those-about-to-die-1235492964/",
+      "body": "Hopkins is the first major cast member announced for the project. He will play Vespasian, a Roman emperor and rural upstart who claimed his throne after victory in a bloody ten-year civil war.",
+      "metadata": {
+        "medialink": "",
+        "tags": ""
+      },
+      "date": "18 Jan 2023",
+      "timestamp": 61903822,
+      "source": "2",
+      "target": "0",
+      "goal": false
+    },
+    {
+      "id": 3,
+      "tag": "article",
+      "title": "King takes part in first Trooping the Colour ceremony as monarch",
+      "subtitle": "The Independent",
+      "link": "https://www.independent.co.uk/news/uk/charles-the-king-prince-of-wales-elizabeth-ii-whitehall-b2359442.html",
+      "body": "This is the first time Charles has taken part in the annual ceremony on Horse Guards Parade in Whitehall as the head of state.",
+      "metadata": {
+        "medialink": "",
+        "tags": ""
+      },
+      "date": "16 Jun 2023",
+      "timestamp": 61903822,
+      "source": "3",
+      "target": "1",
+      "goal": false
+    },
+    {
+      "id": 4,
+      "tag": "twitter",
+      "title": "AHopkins.eth",
+      "subtitle": "@AnthonyHopkins",
+      "link": "https://twitter.com/AnthonyHopkins/status/1667923538316242944?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Etweet",
+      "body": "When the student becomes the master… You go with it 🕺🏻🕺🏻 #Jots #Siena #Italy",
+      "metadata": {
+        "medialink": "",
+        "tags": ""
+      },
+      "date": "11 Jun 2023",
+      "timestamp": 61903822,
+      "source": "4",
+      "target": "1",
+      "goal": false
+    },
+    {
+      "id": 5,
+      "tag": "twitter",
+      "title": "AHopkins.eth",
+      "subtitle": "@AnthonyHopkins",
+      "link": "https://twitter.com/AnthonyHopkins/status/1658869425640992770?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Etweet",
+      "body": "When in Rome….😎 Thank you @peacock. #ThoseAboutToDie. Honored to be a part of this production.",
+      "metadata": {
+        "medialink": "17 May 2023",
+        "tags": ""
+      },
+      "date": "",
+      "timestamp": 61903822,
+      "source": "5",
+      "target": "2",
+      "goal": false
+    },
+    {
+      "id": 6,
+      "tag": "twitter",
+      "title": "AHopkins.eth",
+      "subtitle": "@AnthonyHopkins",
+      "link": "https://twitter.com/AnthonyHopkins/status/1661421679313027090?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Etweet",
+      "body": "Friend Lost and Found in Florence 😎😎<br> #JeffGoldblum",
+      "metadata": {
+        "medialink": "",
+        "tags": ""
+      },
+      "date": "24 May 2023",
+      "timestamp": 61903822,
+      "source": "6",
+      "target": "2",
+      "goal": false
+    }
+  ]
+  ,
+  "links": [
+    { "source": 0, "target": 1},
+    { "source": 0, "target": 2},
+    { "source": 1, "target": 0},
+    { "source": 1, "target": 3},
+    { "source": 2, "target": 0},
+    { "source": 2, "target": 4},
+    { "source": 2, "target": 5},
+    { "source": 3, "target": 0},
+    { "source": 4, "target": 0},
+    { "source": 4, "target": 2},
+    { "source": 5, "target": 2},
+    { "source": 6, "target": 2}
+  ]
+}

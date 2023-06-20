@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title><%=title%></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../assets/timeline/css/timeline.css" />
+  
+    <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="../../../assets/interface2/materialize/css/materialize.min.css"> -->
+    <!-- Compiled and minified JavaScript -->
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
+    <script src="../../../assets/timeline/js/timeline.js"></script>
+</head>
+
+<body>
+
+
+<header>
+    <div class="container">
+      <!-- <h1>Timeline</h1> -->
+      <!-- maybe add some padding to it to make it look like its centered -->
+
+      <div class="search-container">
+        <input type="search" id="search-input" value="Anthony Hopkins" placeholder="Search..." readonly>
+        <button id="search-button">
+            <img src="../../../assets/interface2/icons/search-icon.png" alt="search" class="search-icon">
+        </button>
+      </div>    
+
+      <div class="info-panel row">
+        <div class="col-2 p-1">
+            <div class="row">
+                <div class="col-12">
+                    <img class="img img-fluid mx-auto d-block" src="./prototypetasks/task3a/main.jpg">
+                </div>
+                <div class="col-12">
+                    <h4 class="text-center">Anthony Hopkins</h4>
+                    <h6 class="text-center"><em>Actor</em></h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-7 mt-2">
+            <p class="info-panel-maintext">
+                Sir Philip Anthony Hopkins CBE is a Welsh actor, director, and producer. One of Britain's most recognisable and prolific actors, he is known for his performances on the screen and stage.
+            </p>
+            <ul class="info-panel-metadata">
+                <li><b>Born: </b> <a href="#" data-goal="false">December 31, 1937 (age 85 years), Margam, United Kingdom </a></li>
+                <li><b>Spouse: </b> <a href="#" data-goal="false"> Stella Arroyave (m. 2003), Jennifer Lynton (m. 1973-2002), Petronella Barker (m. 1966-1972)</a></li>
+                <li><b>Children: </b> <a href="#" data-goal="false">Abigail Hopkins </a></li>
+                <li><b>Upcoming movie: </b> <a href="#" data-goal="false">Rebel Moon</a> </li>
+                <li><b>Nominations: </b> <a href="#" data-goal="false"> Academy Award for Best Actor in a Leading Role</a> </li>
+              </ul> 
+        </div>
+        <div class="col-3 info-panel-relatedsearch overflow-auto">
+            <h5 class="mb-4">Related Search</h5>
+            <div class="row row-cols-2 ">
+                <div class="col">
+                    <img class="img img-fluid rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_AsExTA4AaWS6oop4TMXQabrE71_J_pkwEloOmxF_9bOuwTjwJB6_&s=0">
+                    <a href="#" data-goal="false"><em>Stella Arroyave</em></a>
+                </div>
+                <div class="col">
+                    <img class="img img-fluid rounded" src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQ1GHSAt2pj3vh7Dmi9ms5XD7ecRcVg1yJun6pUAlxoQrf5VrWMz-gtUX-iM1wybiExfm5i9Eg&s=19">
+                    <a href="#" data-goal="false"><em>Abiail Hopkins</em></a>
+                </div>
+                <div class="col">
+                    <img class="img img-fluid rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFVGUA_uxRVl-NEGv7fmiZ1txUzjMcSF8VuO4V2Pspkv_dmJq_IFj2&s=0">
+                    <a href="#" data-goal="false"><em>Jodie Foster</em></a>
+                </div>
+                <div class="col">
+                    <img class="img img-fluid rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGhFntdVn9qsKCurjLQUOYJdygCr_OiDxc4N5lpl_YdwStxwgdoq3s&s=0">
+                    <a href="#" data-goal="false"><em>Claire Forlani</em></a>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</header>
+
+    <div class="timeline-title-sticky-container">
+        <h2 class="timeline-title  mt-4"><%=pageHeader%></h2>
+        <button class="switch-view-btn mt-4" title="Open graph view" onclick="window.location.href='task2a_graph'">
+            Switch to Graph View
+            <img src="../../../assets/interface2/icons/graph-4.png" alt="switch view" style="width: 40px; height: 37px; margin-left: 2px;"/>
+        </button>
+    </div>
+
+<section class="timeline">
+<div class="container">    
+    <% var counter = 0; %>
+    <% results.forEach(function(result) { %>
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+        
+            <div class="row p-3 timeline-content js--<%= counter % 2 === 0 ? 'fadeInLeft' : 'fadeInRight' %>">
+                <% if(result.metadata.medialink !== '') { %>
+                    <div class="timeline-card" >
+                        <div class="timeline-img-header" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('<%= result.metadata.medialink %>') center center no-repeat;">
+                            <a href="<%= result.link %>" target="_blank" data-goal="<%= result.goal %>"><h2 style="color: white;"><%= result.title %></h2></a>
+                        </div>
+                        <div class="date"><%=result.date%></div>
+                        <h6 style="color: gray;"><em><%=result.subtitle%></em></h6>
+                        <p><%= result.body %></p>
+                    </div>
+                <% } else { %>
+                    <div class="col-9 p-1">
+                        <h2><a class="timeline-item-title" href="<%= result.link %>" target="_blank" data-goal="<%= result.goal %>"><%= result.title %></a></h2>
+                        <h6 style="color: gray;"><em><%=result.subtitle%></em></h6>
+                    </div>
+                    <div class="col p-0">
+                        <div class="date"><%= result.date ? result.date : new Date(result.timestamp * 1000).toLocaleDateString('en-US', {day:'numeric', month:'short', year:'numeric'}) %></div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <p><%= result.body %></p>
+                        </div>
+                    </div>
+                <% } %>
+                <!-- <a class="bnt-more" href="javascript:void(0)">More</a> -->
+            </div>
+        </div>
+        
+    <% counter++; %>
+    <% }); %>
+
+</div>
+</section>
+
+<script>
+
+    var clickCount = 0;
+
+    // Time attribute when user started navigating the page
+    if (sessionStorage.getItem("timestart") === null ) {
+        sessionStorage.setItem("timestart", window.performance.timing.navigationStart);
+    }
+
+    if (sessionStorage.getItem("clickCounter") === null ) {
+        sessionStorage.setItem("clickCounter", 0);
+    } else {
+        clickCount = sessionStorage.getItem("clickCounter");
+    }
+
+    
+
+    // Get all the anchor tags in the document
+    const links = document.getElementsByTagName('a');
+    
+    // Attach a click event listener to each anchor tag
+    for (let i = 0; i < links.length; i++) {
+      links[i].addEventListener('click', function(event) {
+        // Check if the goal attribute is true
+        const isGoal = event.target.getAttribute('data-goal') === 'true';
+        
+          // Stop the default redirect behavior of the anchor tag
+          event.preventDefault();
+          
+          clickCount++;
+          sessionStorage.setItem("clickCounter", clickCount);
+
+        if (isGoal) {
+          // Show the alert message with the total time
+          const timeTaken = Date.now() - sessionStorage.getItem("timestart");
+          alert('Task Complete. Please click OK and close the tab.');
+
+          const data = {
+                name: "task3a",
+                clickCount: clickCount,
+                timeTaken: timeTaken/1000
+            };
+
+          fetch('/save-results', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
+            
+          sessionStorage.removeItem("clickCounter");
+          sessionStorage.removeItem("timestart");
+          clickCount  = 0;
+          sessionStorage.setItem("timestart", Date.now());
+        }
+      });
+    }
+  </script>
+  
+</body>
+
+</html>

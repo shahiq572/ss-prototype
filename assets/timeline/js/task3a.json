@@ -1,0 +1,93 @@
+{
+    "results": [
+      {
+        "id": 0,
+        "tag": "twitter",
+        "title": "King to keep his mother's Royal Ascot tradition alive",
+        "subtitle": "The Telegraph UK",
+        "link": "https://www.telegraph.co.uk/royal-family/2023/06/19/king-charles-every-day-royal-ascot-elizabeth-ii-tradition/",
+        "body": "Charles III will mirror Elizabeth II's devotion and attend every day of the prestigious horse racing festival.",
+        "metadata": {
+          "medialink": "",
+          "tags": ""
+        },
+        "date": "19 Jun 2023",
+        "timestamp": 1680554483,
+        "goal": "false"
+      },
+      {
+        "id": 1,
+        "tag": "twitter",
+        "title": "Kate Middleton Channels Queen Elizabeth's Final Buckingham Palace Balcony Appearance",
+        "subtitle": "Town and Country Mag",
+        "link": "https://www.townandcountrymag.com/society/tradition/a44232704/kate-middleton-queen-elizabeth-symbolism-final-buckingham-palace-balcony-appearance/",
+        "body": "The Princess of Wales, wearing a bright green dress by Andrew Gn and a hat by Philip Treacy, appeared to channel the last appearance Queen Elizabeth ever made on the Buckingham Palace balcony during her Platinum Jubilee weekend last year.",
+        "metadata": {
+          "medialink": "./prototypetasks/task1a/timeline1.jpg",
+          "tags": "#SBLVII"
+        },
+        "date": "17 Jun 2023",
+        "timestamp": 1680554483,
+        "sentColorCode": "#b3b3b3",
+        "goal": "false"
+      },
+      {
+        "id": 2,
+        "tag": "twitter",
+        "title": "King takes part in first Trooping the Colour ceremony as monarch",
+        "subtitle": "The Independent",
+        "link": "https://www.independent.co.uk/news/uk/charles-the-king-prince-of-wales-elizabeth-ii-whitehall-b2359442.html",
+        "body": "This is the first time Charles has taken part in the annual ceremony on Horse Guards Parade in Whitehall as the head of state.",
+        "metadata": {
+          "medialink": "./prototypetasks/task1a/timeline2.jpg",
+          "tags": "#SBLVII"
+        },
+        "date": "16 Jun 2023",
+        "timestamp": 1680554483,
+        "sentColorCode": "#b3b3b3",
+        "goal": "false"
+      },
+      {
+        "id": 3,
+        "tag": "twitter",
+        "title": "Kate Middleton, Prince William to Celebrate King's Coronation in Scotland",
+        "subtitle": "People",
+        "link": "https://people.com/kate-middleton-prince-william-travel-scotland-celebrate-king-charles-coronation-edinburgh-royal-week-7510268",
+        "body": "Kate Middleton and Prince William will join King Charles and Queen Camilla in Scotland on July 5 for Edinburgh's celebration of the...",
+        "metadata": {
+          "medialink": "",
+          "tags": "#SBLVII #Rihanna"
+        },
+        "date": "12 Jun 2023",
+        "goal": "false"
+      },
+      {
+        "id": 4,
+        "tag": "article",
+        "title": "King Charles III crowned in Westminster Abbey",
+        "subtitle": "Politico",
+        "link": "https://www.politico.eu/article/king-charles-iii-crowned-westminster-abbey/",
+        "body": "LONDON — In a ceremony of pageantry, quirks and ancient tradition, King Charles III, Britain's 62nd monarch, was on Saturday officially...",
+        "metadata": {
+          "medialink": "",
+          "tags": "#SBLVII #Rihanna"
+        },
+        "date": "19 May 2023",
+        "goal": "false"
+      },
+      {
+        "id": 5,
+        "tag": "twitter",
+        "title": "Queen Elizabeth II, England's longest reigning monarch, passes away",
+        "subtitle": "The Oakland Post",
+        "link": "https://oaklandpostonline.com/43024/uncategorized/queen-elizabeth-ii-englands-longest-reigning-monarch-passes-away/",
+        "body": "When Queen Elizabeth II died Sept. 8, it marked the end of Britain's longest-reigning monarch. At the time of her coronation in 1953,...",
+        "metadata": {
+          "medialink": "",
+          "tags": "#SBLVII #Rihanna"
+        },
+        "date": "19 Sep 2022",
+        "goal": "false"
+      }
+    ]
+  }

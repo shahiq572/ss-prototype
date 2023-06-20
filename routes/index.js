@@ -115,5 +115,24 @@ router.get('/task2a_graph', function(req, res, next) {
               });
 });
 
+router.get('/task3a', function(req, res, next) {
+  results = require("../assets/timeline/js/task3a.json").results;
+  res.render('./prototypetasks/task3a/task3a_timeline.ejs', 
+              { title: 'Task - Anthony Hopkins Friend',
+                taskname: "task3a",
+                pageHeader: "Anthony Hopkins",
+                results: results
+              });
+});
+
+router.get('/task3a_graph', function(req, res, next) {
+
+  res.render('./prototypetasks/task3a/task3a_graph.ejs', 
+              { title: 'Task - Anthony Hopkins Friend',
+                taskname: "task3a",
+                pageHeader: "Anthony Hopkins",
+              });
+});
+
 
 module.exports = router;
