@@ -15,7 +15,7 @@ var svg = d3.select("svg")
         .attr("height", height);
 
 var nodes = []
-var data_json = d3.json("/assets/interface2/js/graph.json", function(error, graph) {
+var data_json = d3.json(dataToLoad, function(error, graph) {
     if(error) console.log("ERROR OCCUR: "+JSON.stringify(error, null, 2))
     graph_json = graph;
     updateGraphs(graph.nodes, graph.links);
@@ -124,7 +124,7 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                                                 <p class="twitter_content minimize" textLength="50">${d.body}</p>
                                             </div>
                                             <div class="col s9">
-                                                <p class="posted_at"><small><b>Posted At: </b>18 March 2016</small></p>
+                                                <p class="posted_at"><small><b>Posted At: </b>${d.date ? d.date : "19 Apr 2022"}</small></p>
                                             </div>
                                             <div class="col sm">
                                                 <button class="icon-button" title="Expand Related Results" onClick="clickNode(${d.id})">
@@ -134,7 +134,37 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                                         </div>
                                     </div>
                                     
-                                `} else if(d.tag == "youtube"){
+                                `} 
+                                else if(d.tag == "article") {
+                                    return `
+                                    <div class="card card_design" id="twitter_card">
+                                        <a href="${d.link}" target="_blank" data-goal="${d.goal}">
+                                            <div class="row valign-center" style="margin: 0px;">
+                                                <div class="col s3">
+                                                    <img src="../assets/interface2/icons/news_icon.png" alt="" class="circle responsive-img" style="width: 40px; height: 40px;">
+                                                </div>
+                                                <div class="col s9">
+                                                    <p class="title" style="margin: 0px;"><b>${d.title}</b></p>
+                                                    <small style=" color: #a7a7a7">${d.subtitle}</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <p class="twitter_content minimize" textLength="50">${d.body}</p>
+                                            </div>
+                                            <div class="col s9">
+                                                <p class="posted_at"><small><b>Posted At: </b>${d.date}</small></p>
+                                            </div>
+                                            <div class="col sm">
+                                                <button class="icon-button" title="Expand Related Results" onClick="clickNode(${d.id})">
+                                                    <img src="../assets/interface2/icons/both-3.png" alt="expand" class="icon-button static" style="width: 34px; height: 34px;" >
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `}
+                                else if(d.tag == "youtube"){
                                     return `
                                     <div class="card card_design" id="youtube_card">
                                         <div class="center" id="card_icon">
@@ -168,10 +198,10 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                                                 <h2> ${d.title} </h2>
                                             </div>
                                             <div class="desc_div">
-                                                <p  class="minimize" text-length="50"> ${d.body} </p>
+                                                <p text-length="50"> ${d.body} </p>
                                             </div>
                                             <button class="icon-button" title="Expand Related Results" onClick="clickNode(${d.id})">
-                                                <img src="../assets/interface2/icons/graph-4.png" alt="expand" class="icon-button static" style="width: 30px; height: 30px;" >
+                                                <img src="../assets/interface2/icons/both-3.png" alt="expand" class="icon-button static" style="width: 30px; height: 30px;" >
                                             </button>
                                         </div>
                                 `}
@@ -184,46 +214,11 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                     .attr("x", d => d.x + "px")
                     .attr("y", d => d.y + "px");
         
-
-   
     
     // var simulation = d3.forceSimulation(nodes);
     // simulation
         // .force('center', d3.forceCenter((cx - cardWidth / 2), (cy - cardHeight / 1.5)))
         // .force("links", d3.forceLink(links).id(d => d.id));
-        /*
-        // .force('nodes', d3.forceManyBody().strength(""+cardHeight*-1).distanceMin(cardHeight).distanceMax(cardHeight*2))
-        // .force("collide", d3.forceCollide(function(d) {
-        //     return document.getElementById(d.tag+"_card").clientHeight/1.1
-        //   }))
-        .on('tick', (d, i) => {
-            // nodeSelection.attr('x', d=>d.x).attr('y', d=>d.y)
-
-            // TO fix root node at center
-            //     nodes[0].fx = width/2 - cardWidth/2;
-            //     nodes[0].fy = height/2 - cardHeight/4;      
-            //     nodes[0].fixed = true;
-                
-            // linkSelection
-            //     .attr("x1", function (d) {
-            //             console.log('link for node: '+d.id, d.source.x, d.source.y, d.target.x, d.target.y);
-            //             return d.source.x + cardWidth / 2;
-            //         })
-            //     .attr("y1", d => d.source.y/2 + cardHeight/2)
-            //     .attr("x2", d => d.target.x + cardWidth/2)
-            //     .attr("y2", d => d.target.y + cardHeight/2);
-
-            // nodeSelection.attr('style', d => `left:${d.x}px;top:${d.y}px`);
-
-
-            linkSelection
-                .attr("x1", d => d.source.x + cardWidth/2)
-                .attr("y1", d => d.source.y + cardHeight/2)
-                .attr("x2", d => d.target.x + cardWidth/2)
-                .attr("y2", d => d.target.y + cardHeight/2); 
-        });
-        // .force('collide',d3.forceCollide().radius(60).iterations(2));
-        */
 
         // remove all old links
         svg.selectAll("line").remove();
@@ -298,7 +293,7 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
 
                 if (isGoal == true) {
                     const timeTaken = Date.now() - sessionStorage.getItem("timestart");
-                    alert('Answer found! Total time taken: ' + timeTaken/1000 + 's' + ' and total clicks: ' + clickCount);
+                    alert('Task Complete. Please click OK and close the tab.');
 
                     sessionStorage.removeItem("clickCounter");
                     sessionStorage.removeItem("timestart");
@@ -306,7 +301,7 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                     sessionStorage.setItem("timestart", Date.now());
 
                     const data = {
-                        name: "demotask_graph",
+                        name: taskname,
                         clickCount: clickCount,
                         timeTaken: timeTaken/1000
                     };
