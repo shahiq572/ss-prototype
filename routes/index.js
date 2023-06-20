@@ -81,7 +81,7 @@ router.get('/task1a', function(req, res, next) {
   results = require("../assets/timeline/js/task1a.json").results;
   res.render('./prototypetasks/task1a/task1a_timeline.ejs', 
               { title: 'Task - Queens birth city',
-                taskname: "task1a_timeline",
+                taskname: "task1a",
                 pageHeader: "Queen Elizabeth II",
                 results: results
               });
@@ -91,8 +91,27 @@ router.get('/task1a_graph', function(req, res, next) {
 
   res.render('./prototypetasks/task1a/task1a_graph.ejs', 
               { title: 'Task - Queens birth city',
-                taskname: "task1a_graph",
+                taskname: "task1a",
                 pageHeader: "Queen Elizabeth II",
+              });
+});
+
+router.get('/task2a', function(req, res, next) {
+  results = require("../assets/timeline/js/task2a.json").results;
+  res.render('./prototypetasks/task2a/task2a_timeline.ejs', 
+              { title: 'Task - Brexit transition',
+                taskname: "task2a",
+                pageHeader: "Brexit",
+                results: results
+              });
+});
+
+router.get('/task2a_graph', function(req, res, next) {
+
+  res.render('./prototypetasks/task2a/task2a_graph.ejs', 
+              { title: 'Task - Brexit transition',
+                taskname: "task2a",
+                pageHeader: "Brexit",
               });
 });
 
