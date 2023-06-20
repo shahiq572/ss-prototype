@@ -266,14 +266,13 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                 const isGoal = event.currentTarget.getAttribute("data-goal") == 'true';
                 event.preventDefault();
                 clickCount++;
-                sessionStorage.setItem("clickCounter", clickCount);
+                sessionStorage.setItem(taskname.slice(-2)+"_clickCounter", clickCount);
 
 
                 // console.log("click count", isGoal, event.currentTarget);
 
                 if (isGoal == true) {
-                    const timeTaken = Date.now() - sessionStorage.getItem("timestart");
-                    alert('Task Complete. Please click OK and close the tab.');
+                    const timeTaken = Date.now() - sessionStorage.getItem(taskname.slice(-2)+"_timestart");
 
                     const data = {
                         name: taskname,
@@ -295,11 +294,13 @@ function updateGraphs(nodesArr, linksArr, centerNodeId = 0) {
                     .catch((error) => {
                         console.error('Error:', error);
                     });
+
+                    alert('Task Complete. Please click OK and close the tab.');
                     
-                    sessionStorage.removeItem("clickCounter");
-                    sessionStorage.removeItem("timestart");
+                    sessionStorage.removeItem(taskname.slice(-2)+"_clickCounter");
+                    sessionStorage.removeItem(taskname.slice(-2)+"_timestart");
                     clickCount  = 0;
-                    sessionStorage.setItem("timestart", Date.now());
+                    sessionStorage.setItem(taskname.slice(-2)+"_timestart", Date.now());
                 }
             });
         }
