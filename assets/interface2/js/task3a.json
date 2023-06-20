@@ -53,23 +53,6 @@
       "goal": false
     },
     {
-      "id": 3,
-      "tag": "article",
-      "title": "King takes part in first Trooping the Colour ceremony as monarch",
-      "subtitle": "The Independent",
-      "link": "https://www.independent.co.uk/news/uk/charles-the-king-prince-of-wales-elizabeth-ii-whitehall-b2359442.html",
-      "body": "This is the first time Charles has taken part in the annual ceremony on Horse Guards Parade in Whitehall as the head of state.",
-      "metadata": {
-        "medialink": "",
-        "tags": ""
-      },
-      "date": "16 Jun 2023",
-      "timestamp": 61903822,
-      "source": "3",
-      "target": "1",
-      "goal": false
-    },
-    {
       "id": 4,
       "tag": "twitter",
       "title": "AHopkins.eth",
