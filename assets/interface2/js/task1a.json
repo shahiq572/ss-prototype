@@ -1,0 +1,139 @@
+{
+  "nodes": [
+    {
+      "id": 0,
+      "tag": "op",
+      "title": "Elizabeth II",
+      "subtitle": "Wikipedia",
+      "link": "https://en.wikipedia.org/wiki/Elizabeth_II",
+      "body": "Elizabeth II (Elizabeth Alexandra Mary) was Queen of the United Kingdom and other Commonwealth realms. She was queen regnant of 32 sovereign states during her lifetime and remained the monarch of 15 realms by the time of her death. Her reign of over 70 years is the longest of any British monarch and the longest verified reign of any female head of state in history.",
+      "metadata": {
+        "medialink": "https://pbs.twimg.com/profile_images/1619895559334273028/PHKS_mjX_400x400.jpg",
+        "tags": "#SBLVII"
+      },
+      "date": "",
+      "timestamp": 61903822,
+      "sentColorCode": "#b3b3b3",
+      "source": "0",
+      "target": "1",
+      "goal": false
+    },
+    {
+      "id": 1,
+      "tag": "article",
+      "title": "King to keep his mother's Royal Ascot tradition alive",
+      "subtitle": "The Telegraph UK",
+      "link": "https://www.telegraph.co.uk/royal-family/2023/06/19/king-charles-every-day-royal-ascot-elizabeth-ii-tradition/",
+      "body": "Charles III will mirror Elizabeth II's devotion and attend every day of the prestigious horse racing festival.",
+      "metadata": {
+        "medialink": "",
+        "tags": ""
+      },
+      "date": "19 Jun 2023",
+      "timestamp": 1680554483,
+      "source": "1",
+      "target": "0",
+      "goal": false
+    },
+    {
+      "id": 2,
+      "tag": "article",
+      "title": "Kate Middleton Channels Queen Elizabeth's Final Buckingham Palace Balcony Appearance",
+        "subtitle": "Town and Country Mag",
+        "link": "https://www.townandcountrymag.com/society/tradition/a44232704/kate-middleton-queen-elizabeth-symbolism-final-buckingham-palace-balcony-appearance/",
+        "body": "The Princess of Wales, wearing a bright green dress by Andrew Gn and a hat by Philip Treacy, appeared to channel the last appearance Queen Elizabeth ever made on the Buckingham Palace balcony during her Platinum Jubilee weekend last year.",
+      "metadata": {
+        "medialink": "",
+        "tags": ""
+      },
+      "date": "17 Jun 2023",
+      "timestamp": 61903822,
+      "source": "2",
+      "target": "0",
+      "goal": false
+    },
+    {
+      "id": 3,
+      "tag": "article",
+      "title": "King takes part in first Trooping the Colour ceremony as monarch",
+      "subtitle": "The Independent",
+      "link": "https://www.independent.co.uk/news/uk/charles-the-king-prince-of-wales-elizabeth-ii-whitehall-b2359442.html",
+      "body": "This is the first time Charles has taken part in the annual ceremony on Horse Guards Parade in Whitehall as the head of state.",
+      "metadata": {
+        "medialink": "",
+        "tags": ""
+      },
+      "date": "16 Jun 2023",
+      "timestamp": 61903822,
+      "source": "3",
+      "target": "1",
+      "goal": false
+    },
+    {
+      "id": 4,
+      "tag": "article",
+      "title": "Kate Middleton, Prince William to Celebrate King's Coronation in Scotland",
+      "subtitle": "People",
+      "link": "https://people.com/kate-middleton-prince-william-travel-scotland-celebrate-king-charles-coronation-edinburgh-royal-week-7510268",
+      "body": "Kate Middleton and Prince William will join King Charles and Queen Camilla in Scotland on July 5 for Edinburgh's celebration of the...",
+      "metadata": {
+        "medialink": "",
+        "tags": ""
+      },
+      "date": "12 Jun 2023",
+      "timestamp": 61903822,
+      "source": "4",
+      "target": "2",
+      "goal": false
+    },
+    {
+      "id": 5,
+      "tag": "article",
+      "title": "Kate Middleton's Trooping the Colour Look Had So Many Hidden Messages",
+      "subtitle": "InStyle",
+      "link": "https://www.instyle.com/kate-middleton-2023-trooping-the-colour-outfit-7548714",
+      "body": "Kate Middleton attended the 2023 Trooping the Colour for the first time as the Princess of Wales in a gorgeous green coat dress by Andrew...",
+      "metadata": {
+        "medialink": "18 Jun 2023",
+        "tags": ""
+      },
+      "date": "",
+      "timestamp": 61903822,
+      "source": "5",
+      "target": "2",
+      "goal": false
+    },
+    {
+      "id": 6,
+      "tag": "article",
+      "title": "King Charles includes Prince Harry in poignant Father’s Day tribute",
+      "subtitle": "The Independent",
+      "link": "https://www.independent.co.uk/life-style/royal-family/king-charles-prince-harry-fathers-day-b2360185.html",
+      "body": "The Duke of Sussex last saw his father at his coronation ceremony last month",
+      "metadata": {
+        "medialink": "",
+        "tags": ""
+      },
+      "date": "19 Jun 2023",
+      "timestamp": 61903822,
+      "source": "6",
+      "target": "1",
+      "goal": false
+    }
+  ]
+  ,
+  "links": [
+    { "source": 0, "target": 1},
+    { "source": 0, "target": 2},
+    { "source": 1, "target": 0},
+    { "source": 1, "target": 3},
+    { "source": 2, "target": 0},
+    { "source": 2, "target": 4},
+    { "source": 2, "target": 5},
+    { "source": 3, "target": 0},
+    { "source": 4, "target": 0},
+    { "source": 4, "target": 2},
+    { "source": 5, "target": 2},
+    { "source": 6, "target": 1}
+  ]
+}

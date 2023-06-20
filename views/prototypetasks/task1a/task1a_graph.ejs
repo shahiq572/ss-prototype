@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title><%=title%></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../assets/interface2/css/style.css" />
+    <link rel="stylesheet" href="../../../assets/interface2/css/d3_style.css" />
+    <link rel="stylesheet" href="../../../assets/interface2/css/timeline_style.css" />
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="../../../assets/interface2/materialize/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+
+    <script src="http://d3js.org/d3.v4.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../../assets/interface2/materialize/js/materialize.js"></script>
+    <script src="../../../assets/interface2/js/index.js"></script>
+</head>
+
+<body>
+    
+
+    <div class="graph">
+        <div class="search-container">
+            <h5 class="brand-logo">
+                Graph View
+            </h5>
+            <button class="switch-view-btn mt-4 float-right" title="Open graph view" onclick="window.location.href='task1a'">
+                Switch to Timeline View
+                <img src="../../../assets/interface2/icons/bar-chart.png" alt="switch view" style="width: 40px; height: 37px; margin-left: 2px;"/>
+            </button>
+        </div>
+        <div class="d3_graph" id="aaa">
+            <h4 class="center mt-4"><%=pageHeader%></h4>
+            <svg></svg>
+        </div>
+    </div>
+</body>
+
+<script> const dataToLoad = "/assets/interface2/js/task1a.json"; const taskname = "<%=taskname%>"; </script>
+
+<script src="../assets/interface2/js/story_graph.js"></script>
+
+<script src="../../../assets/interface2/js/index.js"></script>
+
+<script>
+    
+    var clickCount = 0;
+
+    // Time attribute when user started navigating the page
+    if (sessionStorage.getItem("timestart") === null ) {
+        sessionStorage.setItem("timestart", window.performance.timing.navigationStart);
+    }
+
+    if (sessionStorage.getItem("clickCounter") === null ) {
+        sessionStorage.setItem("clickCounter", 0);
+    } else {
+        clickCount = sessionStorage.getItem("clickCounter");
+    }
+
+</script>
+
+</head>

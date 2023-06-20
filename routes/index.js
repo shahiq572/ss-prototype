@@ -10,7 +10,11 @@ router.get('/', function(req, res, next) {
 
 /* GET demo1-politics */
 router.get('/demo1', function(req, res, next) {
-  res.render('demo1', { title: 'Express' });
+  res.render('demo1', 
+      { title: 'Graph view - demo',
+        taskname: "demotask_graph",
+        pageHeader: "NFL Super Bowl",
+      });
 });
 
 /* GET timelines */
@@ -66,6 +70,29 @@ router.get('/g_task3a', function(req, res, next) {
               { title: 'Task 3 - Anthony Hopkins',
                 taskname: "gtask3a",
                 pageHeader: "Anthony Hopkins"
+              });
+});
+
+
+/* Prototype Tasks */
+
+// Task Set A
+router.get('/task1a', function(req, res, next) {
+  results = require("../assets/timeline/js/task1a.json").results;
+  res.render('./prototypetasks/task1a/task1a_timeline.ejs', 
+              { title: 'Task - Queens birth city',
+                taskname: "task1a_timeline",
+                pageHeader: "Queen Elizabeth II",
+                results: results
+              });
+});
+
+router.get('/task1a_graph', function(req, res, next) {
+
+  res.render('./prototypetasks/task1a/task1a_graph.ejs', 
+              { title: 'Task - Queens birth city',
+                taskname: "task1a_graph",
+                pageHeader: "Queen Elizabeth II",
               });
 });
 
