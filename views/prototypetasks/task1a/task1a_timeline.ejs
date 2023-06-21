@@ -48,10 +48,11 @@
                 Elizabeth II was Queen of the United Kingdom and other Commonwealth realms from 6 February 1952 until her death in 2022. She was queen regnant of 32 sovereign states during her lifetime and remained the monarch of 15 realms by the time of her death
             </p>
             <ul class="info-panel-metadata">
-                <li><b>Born: </b> <a href="#" data-goal="true">Bruton Street, London, United Kingdom</a></li>
+                <li><b>Born: </b> <a href="#" data-goal="false">Bruton Street, London, United Kingdom</a></li>
                 <li><b>Died: </b> <a href="#" data-goal="false">Balmoral Castle, United Kingdom</a> </li>
                 <li><b>Parents: </b> <a href="#" data-goal="false">Queen Elizabeth The Queen Mother, George VI</a></li>
-                <li><b>Spouse: </b> <a href="#" data-goal="false">Prince Philip (m. 1947-2021)</a></li>
+                <li><b>Spouse: </b> <a href="#" data-goal="true">Prince Philip (m. 1947-2021)</a></li>
+                <li><b>Children: </b> <a href="#" data-goal="false">Charles III, Anne, Princess Royal, Prince Edward, Duke of Edinburgh, Prince Andrew, Duke of York</a></li>
               </ul> 
         </div>
         <div class="col-3 info-panel-relatedsearch">
@@ -158,6 +159,8 @@
           
           clickCount++;
           sessionStorage.setItem("1a_clickCounter", clickCount);
+
+          console.log("here");
 
         if (isGoal) {
           // Show the alert message with the total time
