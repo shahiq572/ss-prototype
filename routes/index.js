@@ -39,7 +39,7 @@ router.post('/save-results', function (req, res) {
     fs.mkdirSync('./data/');
   }
 
-  fs.writeFile("./data/"+req.body.name+'_'+Date.now()+'.csv', fileContent , function(err) {
+  fs.writeFileSync("./data/"+req.body.name+'_'+Date.now()+'.csv', fileContent , function(err) {
     if (err) throw err;
     console.log('Saved!', req.body.name);
   });
