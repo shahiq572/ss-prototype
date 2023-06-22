@@ -95,12 +95,14 @@
             <div class="row p-3 timeline-content js--<%= counter % 2 === 0 ? 'fadeInLeft' : 'fadeInRight' %>">
                 <% if(result.metadata.medialink !== '') { %>
                     <div class="timeline-card" >
-                        <div class="timeline-img-header" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('<%= result.metadata.medialink %>') center center no-repeat;">
-                            <a href="<%= result.link %>" target="_blank" data-goal="<%= result.goal %>"><h2 style="color: white;"><%= result.title %></h2></a>
-                        </div>
-                        <div class="date"><%=result.date%></div>
+                        <a href="<%= result.link %>" target="_blank" data-goal="<%= result.goal %>">
+                            <div class="timeline-img-header" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('<%= result.metadata.medialink %>') center center no-repeat;">
+                                <h2 style="color: white;"><%= result.title %></h2>
+                            </div>
+                            <div class="date"><%=result.date%></div>
+                        </a>
                         <h6 style="color: gray;"><em><%=result.subtitle%></em></h6>
-                        <p><%= result.body %></p>
+                        <p><%- result.body %></p>
                     </div>
                 <% } else { %>
                     <div class="col-9 p-1">
@@ -112,7 +114,7 @@
                     </div>
                     <div class="row m-2">
                         <div class="col-12">
-                            <p><%= result.body %></p>
+                            <p><%- result.body %></p>
                         </div>
                     </div>
                 <% } %>
@@ -150,7 +152,7 @@
     for (let i = 0; i < links.length; i++) {
       links[i].addEventListener('click', function(event) {
         // Check if the goal attribute is true
-        const isGoal = event.target.getAttribute('data-goal') === 'true';
+        const isGoal = event.currentTarget.getAttribute('data-goal') === 'true';
         
           // Stop the default redirect behavior of the anchor tag
           event.preventDefault();

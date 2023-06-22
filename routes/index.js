@@ -54,7 +54,7 @@ router.post('/save-results', function (req, res) {
 // Task Set A
 router.get('/g_task1a', function(req, res, next) {
   res.render('./googletasks/task1a_queen/queenelizabeth.ejs', 
-              { title: 'Task 1 - Queen Elizabeth',
+              { title: 'Task 1 - Queens Birth City',
                 taskname: "gtask1a",
                 pageHeader: "Queen Elizabeth"
               });
@@ -62,7 +62,7 @@ router.get('/g_task1a', function(req, res, next) {
 
 router.get('/g_task2a', function(req, res, next) {
   res.render('./googletasks/task2a_brexit/brexit.ejs', 
-              { title: 'Task 2 - Brexit transition period',
+              { title: 'Task 2 - Brexit Transition Period',
                 taskname: "gtask2a",
                 pageHeader: "Brexit"
               });
@@ -70,7 +70,7 @@ router.get('/g_task2a', function(req, res, next) {
 
 router.get('/g_task3a', function(req, res, next) {
   res.render('./googletasks/task3a_hopkins/anthony_hopkins.ejs', 
-              { title: 'Task 3 - Anthony Hopkins',
+              { title: 'Task 3 - Anthony Hopkins Friend',
                 taskname: "gtask3a",
                 pageHeader: "Anthony Hopkins"
               });
@@ -83,7 +83,7 @@ router.get('/g_task3a', function(req, res, next) {
 router.get('/task1a', function(req, res, next) {
   results = require("../assets/timeline/js/task1a.json").results;
   res.render('./prototypetasks/task1a/task1a_timeline.ejs', 
-              { title: 'Task - Queens birth city',
+              { title: 'Task - Queens Spouse',
                 taskname: "task1a",
                 pageHeader: "Queen Elizabeth II",
                 results: results
@@ -93,7 +93,7 @@ router.get('/task1a', function(req, res, next) {
 router.get('/task1a_graph', function(req, res, next) {
 
   res.render('./prototypetasks/task1a/task1a_graph.ejs', 
-              { title: 'Task - Queens birth city',
+              { title: 'Task - Queens Spouse',
                 taskname: "task1a",
                 pageHeader: "Queen Elizabeth II",
               });
@@ -102,7 +102,7 @@ router.get('/task1a_graph', function(req, res, next) {
 router.get('/task2a', function(req, res, next) {
   results = require("../assets/timeline/js/task2a.json").results;
   res.render('./prototypetasks/task2a/task2a_timeline.ejs', 
-              { title: 'Task - Brexit transition',
+              { title: 'Task - Brexit Extended Date',
                 taskname: "task2a",
                 pageHeader: "Brexit",
                 results: results
@@ -112,7 +112,7 @@ router.get('/task2a', function(req, res, next) {
 router.get('/task2a_graph', function(req, res, next) {
 
   res.render('./prototypetasks/task2a/task2a_graph.ejs', 
-              { title: 'Task - Brexit transition',
+              { title: 'Task - Brexit Extended Date',
                 taskname: "task2a",
                 pageHeader: "Brexit",
               });
@@ -121,7 +121,7 @@ router.get('/task2a_graph', function(req, res, next) {
 router.get('/task3a', function(req, res, next) {
   results = require("../assets/timeline/js/task3a.json").results;
   res.render('./prototypetasks/task3a/task3a_timeline.ejs', 
-              { title: 'Task - Anthony Hopkins Friend',
+              { title: 'Task - Anthony Hopkins Reaction',
                 taskname: "task3a",
                 pageHeader: "Anthony Hopkins",
                 results: results
@@ -131,7 +131,7 @@ router.get('/task3a', function(req, res, next) {
 router.get('/task3a_graph', function(req, res, next) {
 
   res.render('./prototypetasks/task3a/task3a_graph.ejs', 
-              { title: 'Task - Anthony Hopkins Friend',
+              { title: 'Task - Anthony Hopkins Reaction',
                 taskname: "task3a",
                 pageHeader: "Anthony Hopkins",
               });

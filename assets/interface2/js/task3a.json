@@ -84,7 +84,7 @@
       "timestamp": 61903822,
       "source": "5",
       "target": "2",
-      "goal": false
+      "goal": true
     },
     {
       "id": 6,
@@ -101,7 +101,7 @@
       "timestamp": 61903822,
       "source": "6",
       "target": "2",
-      "goal": true
+      "goal": false
     }
   ]
   ,
